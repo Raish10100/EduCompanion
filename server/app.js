@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors'
 import morgan from 'morgan';
+import userRoutes from './routes/user.router.js'
 
 const app = express(); // creating instance of express
 
@@ -19,6 +20,9 @@ app.use('/ping', function(req, res){
 })
  
 //routes
+
+// user routes will be prefixed with /api/v1/user
+app.unsubscribe('/api/v1/user', userRoutes);
 
 
 // if no routes are matched then send 404 page not found
