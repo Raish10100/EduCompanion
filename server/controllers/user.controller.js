@@ -101,12 +101,23 @@ const logout = (req, res) => {
     })
 };
 
-const getProfile = (req, res) => {
-
+const getProfile = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const user = await User.findById(userId);
+    
+        res.status(200).json({
+            success: true,
+            message: 'User details',
+            user 
+        });
+      } catch (error) {
+           return next(new AppError('Failed to fetch profile data', 500));
+      }
 };
 
 export {
-    register,
+    register, 
     login,
     logout,
     getProfile
