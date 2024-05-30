@@ -25,7 +25,7 @@ app.use('/ping', function(req, res){
 //routes
 
 // user routes will be prefixed with /api/v1/user
-app.unsubscribe('/api/v1/user', userRoutes);
+app.use('/api/v1/user', userRoutes);
 
 
 // if no routes are matched then send 404 page not found
