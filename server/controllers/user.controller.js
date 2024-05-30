@@ -1,5 +1,12 @@
 import User from "../models/user.model";
 
+
+const cookieOptions = {
+    maxAge: 7 * 24 * 60 * 60 * 1000,  // 7 days
+    httpOnly: true,
+    secure: true,
+}
+
 const register = async (req, res, next) => {
     const { fullName, email, password } = req.body;
 
@@ -35,6 +42,8 @@ const register = async (req, res, next) => {
     user.password = undefined; // password field will be undefined in response.
 
     const token = await user.generateJWTToken();
+
+    res.cookie('token', token, cookieOptions); 
 
     res.status(201).json({
         success: true,

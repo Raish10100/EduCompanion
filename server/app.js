@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors'
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.router.js'
 import errorMiddleware from './middlewares/error.middleware.js';
 
@@ -15,6 +16,7 @@ app.use(cors({
 }))
 
 app.use(morgan('dev'))
+app.use(cookieParser())
 
 app.use('/ping', function(req, res){
     res.send('pong')
