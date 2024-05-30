@@ -32,6 +32,16 @@ const register = async (req, res, next) => {
 
     await user.save();
 
+    user.password = undefined; // password field will be undefined in response.
+
+    const token = await user.generateJWTToken();
+
+    res.status(201).json({
+        success: true,
+        message: 'User registration successful',
+        user,
+    })
+
 
 };
 
