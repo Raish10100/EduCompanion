@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors'
 import morgan from 'morgan';
 import userRoutes from './routes/user.router.js'
+import errorMiddleware from './middlewares/error.middleware.js';
 
 const app = express(); // creating instance of express
 
@@ -29,5 +30,7 @@ app.unsubscribe('/api/v1/user', userRoutes);
 app.all('*', (req, res) => {
     res.status(404).send('OOPS! 404 page not found');
 })
+
+app.use(errorMiddleware);
 
 export default app; 
