@@ -1,4 +1,5 @@
-import User from "../models/user.model";
+import User from "../models/user.model.js";
+import AppError from "../utils/error.util.js";
 
 
 const cookieOptions = {
@@ -15,7 +16,7 @@ const register = async (req, res, next) => {
     };
 
     const userExists = await User.findOne({email});
-
+ 
     if(userExists) {
         return next(new AppError('Email already exists', 400));
     }
@@ -54,8 +55,37 @@ const register = async (req, res, next) => {
 
 };
 
-const login = (req, res) => {
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
+        if(!email || !password) {
+            return next(new AppError('All fields are required', 400));
+        };
+    
+        const user = await User.findOne({  // "user" variable holds all details related to the specific user.
+            email 
+        }).select('+password');
+    
+        if (!user || !user.comparePassword(password)) {
+            return next(new AppError('Email or password is incorrect', 400));
+        }
+    
+        const token = await user.generateJWTToken();
+        user.password = undefined;
+    
+    
+        res.cookie('token', token, cookieOptions);
+    
+        res.status(200).json({
+            success: true,
+            message: 'User loggedin successfully',
+            user,
+        })
+    
+    } catch (error) {
+        return next(new AppError(e.message, 500))
+    }
 };
 
 const logout = (req, res) => {
