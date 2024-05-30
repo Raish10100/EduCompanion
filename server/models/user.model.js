@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt'
 
 const userSchema = new Schema({
     fullName: {
@@ -48,8 +49,18 @@ const userSchema = new Schema({
     {
       timestamps: true,
     }
+);
 
-)
+
+// Password hashing middleware: hashes the password before saving to database
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) {
+    return next();
+  }
+  this.password = await bcrypt.hash(this.password, 10);
+})
+
+
 
 const User = model('User', userSchema);
 
