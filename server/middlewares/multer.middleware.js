@@ -2,7 +2,7 @@ import path from 'path';
 import multer from 'multer'   //* reference: https://www.npmjs.com/package/multer
 
 const upload = multer({
-    dest: 'public/uploads',
+    dest: 'uploads/',
     limits: {fileSize: '50MB'},  // 50 mb is max limit of file
     storage: multer.diskStorage({
         destination: 'uploads/',
