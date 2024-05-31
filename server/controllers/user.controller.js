@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import AppError from "../utils/error.util.js";
 import cloudinary from  'cloudinary'
 import fs from 'fs/promises'
+import sendEmail from "../utils/sendEmail.js";
 
 const cookieOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000,  // 7 days
@@ -141,9 +142,64 @@ const getProfile = async (req, res) => {
       }
 };
 
+const forgotPassword = async (req, res, next) => {
+    const { email } = req.body;
+    if(!email) {
+        return next(new AppError('Email is required', 400));
+    }
+
+    // check for email exists in database or not.
+    const user = await User.findOne({email});
+    if(!user) {
+        return next(new AppError('Email not exists', 400));
+    }
+
+    // console.log(user)
+    // if email exists then generate reset token
+    const resetToken = await user.generatePasswordResetToken();
+
+    await user.save();
+
+    const resetPasswordURL = `${process.env.FRONTEND_URL}/resetPassword/${'resetToken'}`;
+
+    const subject = 'Reset Password';
+    const message = `
+                        <p>We recently received a request to reset the password for your account. If you requested this reset, click the button below to create a new password.</p>
+                        <br/>
+                        <a href="${resetPasswordURL}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none;">
+                        Set a New Password
+                        </a>
+                        <br/>
+                        <br/>
+                        <p>If you did not request a password reset, you can safely ignore this email.</p>
+                    `;  
+
+
+    // send email to user with reset password url.
+    try {
+        await sendEmail(email, subject, message);
+
+        res.status(200).json({
+            success: true,
+            message: `Reset password token has been sent to ${email} successfully`
+        });
+
+    } catch (error) {
+
+        // if there is any error then remove token
+        user.forgotPasswordExpiry = undefined;
+        user.forgotPasswordToken  = undefined;
+        await user.save();
+        
+        next(new AppError(error.message, 500))
+    }
+
+}
+
 export {
     register, 
     login,
     logout,
-    getProfile
+    getProfile,
+    forgotPassword
 }
