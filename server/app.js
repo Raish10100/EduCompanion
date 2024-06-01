@@ -9,6 +9,7 @@ const app = express(); // creating instance of express
 
 
 app.use(express.json());// for parsing incoming JSON payloads 
+app.use(express.urlencoded({ extended: true }))
 
 app.use(cors({ 
     origin: [process.env.FRONTEND_URL],

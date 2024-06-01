@@ -3,6 +3,7 @@ import AppError from "../utils/error.util.js";
 import cloudinary from  'cloudinary'
 import fs from 'fs/promises'
 import sendEmail from "../utils/sendEmail.js";
+import crypto from 'crypto'
 
 const cookieOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000,  // 7 days
@@ -110,7 +111,7 @@ const login = async (req, res, next) => {
         })
     
     } catch (error) {
-        return next(new AppError(e.message, 500))
+        return next(new AppError(error.message, 500))
     }
 };
 
@@ -156,11 +157,11 @@ const forgotPassword = async (req, res, next) => {
 
     // console.log(user)
     // if email exists then generate reset token
-    const resetToken = await user.generatePasswordResetToken();
-
+    const resetToken = await user.generatePasswordResetToken(); 
+    console.log(resetToken);
     await user.save();
 
-    const resetPasswordURL = `${process.env.FRONTEND_URL}/resetPassword/${'resetToken'}`;
+    const resetPasswordURL = `${process.env.FRONTEND_URL}/resetPassword/${resetToken}`;
 
     const subject = 'Reset Password';
     const message = `
@@ -196,10 +197,49 @@ const forgotPassword = async (req, res, next) => {
 
 }
 
+const resetPassword = async(req, res, next) => {
+    const { resetToken } = req.params;
+
+    const { password } = req.body;
+
+    const forgotPasswordToken = crypto
+                                    .createHash('sha256')
+                                    .update(resetToken)
+                                    .digest('hex');
+
+    const user = await User.findOne({
+        forgotPasswordToken,
+        forgotPasswordExpiry: { $gt: Date.now() }
+    });
+
+    if(!user) {
+        return next(new AppError(`Reset password token is invalid or expired`, 400));
+    }
+
+    try {
+        user.password = password;
+        user.forgotPasswordToken = undefined;
+        user.forgotPasswordExpiry = undefined;
+
+        user.save();
+        res.status(200).json({
+            success: true,
+            message: "Reset password successfully"
+        })
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+
+}
+
 export {
     register, 
     login,
     logout,
     getProfile,
-    forgotPassword
+    forgotPassword,
+    resetPassword
 }
