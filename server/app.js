@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.router.js'
 import errorMiddleware from './middlewares/error.middleware.js';
+import courseRoutes from './routes/course.router.js'
 
 const app = express(); // creating instance of express
 
@@ -25,9 +26,11 @@ app.use('/ping', function(req, res){
  
 //routes
 
-// user routes will be prefixed with /api/v1/user
+// user routes  prefixed with /api/v1/user
 app.use('/api/v1/user', userRoutes);
 
+// course routes  prefixed with /api/v1/course
+app.use('/api/v1/courses', courseRoutes);
 
 // if no routes are matched then send 404 page not found
 app.all('*', (req, res) => {
