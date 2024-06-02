@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { changePassword, forgotPassword, getProfile, login, logout, register, resetPassword } from '../controllers/user.controller.js';
+import { changePassword, forgotPassword, getProfile, login, logout, register, resetPassword, updateUser } from '../controllers/user.controller.js';
 import isLoggedIn from '../middlewares/auth.middleware.js';
 import upload from '../middlewares/multer.middleware.js';
 
@@ -11,6 +11,7 @@ router.get('/logout', logout);
 router.get('/me', isLoggedIn, getProfile);
 router.post('/forgotPassword', forgotPassword);
 router.post('/resetPassword/:resetToken', resetPassword);
-router.post('/changePassword', isLoggedIn, changePassword)
+router.post('/changePassword', isLoggedIn, changePassword);
+router.post('/update', isLoggedIn, upload.single('avatar'), updateUser);
 
 export default router; 
