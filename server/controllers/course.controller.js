@@ -71,9 +71,7 @@ const createCourse = async(req, res, next) => {
                 const result = await cloudinary.v2.uploader.upload(req.file.path, {
                     folder: 'lms'
                 });
-                // console.log('debugg')
-    // console.log(result.public_id);
-    // console.log(result.secure_url);
+
                 if(result) {
                     course.thumbnail.public_id = result.public_id;
                     course.thumbnail.secure_url = result.secure_url;
@@ -156,10 +154,78 @@ const removeCourse = async(req, res, next) => {
     }
 }
 
+const addLectureToCourseById = async(req, res, next) => {
+    try {
+        
+        const { title, description } = req.body;
+        const { id } = req.params;
+
+        if(!title || !description) {
+            return next(
+                new AppError('Please provide all fields', 400)
+            )
+        }
+
+        const course = await Course.findById(id);
+        if(!course) {
+            return next(
+                new AppError('Course not found', 404)
+            )
+        } 
+
+     const lectureData = {};
+
+     if (req.file) {
+        try {
+          const result = await cloudinary.v2.uploader.upload(req.file.path, {
+            folder: 'lms', 
+            chunk_size: 50000000, // 50mb
+            resource_type: 'video',
+          });
+    
+          if (result) {
+            lectureData.public_id = result.public_id;
+            lectureData.secure_url = result.secure_url;
+          }
+    
+          fs.rm(`uploads/${req.file.filename}`);
+
+        } catch (error) {
+            return next(
+                new AppError('Unable to upload file', 500)
+            )
+        }
+      }
+
+      course.lectures.push({
+        title,
+        description,
+        lecture: lectureData
+      })
+
+      course.numbersOfLectures = course.lectures.length;
+
+      await course.save();
+
+      res.status(200).json({
+        success: true,
+        message: 'Successfully added  lecture to course',
+        
+      })
+
+    } catch (error) {
+        res.status(400).json({
+        success: false,
+        message: error.message
+    })  
+    }
+}
+
 export {
     getAllCourses,
     getLecturesByCourseId,
     createCourse,
     updateCourse,
-    removeCourse
+    removeCourse,
+    addLectureToCourseById
 }
