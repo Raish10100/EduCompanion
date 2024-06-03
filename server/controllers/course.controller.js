@@ -97,8 +97,42 @@ const createCourse = async(req, res, next) => {
     }
 }
 
+const updateCourse = async(req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const course = await Course.findByIdAndUpdate(
+            id,
+            {
+                $set: req.body,
+            },
+            {
+                runValidators: true
+            }
+        );
+        
+        if(!course) {
+            return next(
+                new AppError('Unable to update course', 500)
+            )
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Successfully updated course',
+            course
+        })
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message,
+        })
+    }
+}
+
 export {
     getAllCourses,
     getLecturesByCourseId,
-    createCourse
+    createCourse,
+    updateCourse
 }
