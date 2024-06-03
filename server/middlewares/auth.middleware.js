@@ -13,6 +13,23 @@ const isLoggedIn = async (req, res, next) => {
     req.user = userDetails;
 
     return next();
+};
+
+const authorizedRoles = (...roles) => {   // argument converted into array
+
+    return async (req, res, next) => {     
+        const currentUserRole = req.user.role;
+        if(!roles.includes(currentUserRole)) {
+            return next(
+                new AppError('You are not authorized to perform this action', 403)
+            )
+        }
+        next();
+    }
 }
 
-export default isLoggedIn; 
+
+export  {
+    isLoggedIn,
+    authorizedRoles
+}
