@@ -210,7 +210,7 @@ const addLectureToCourseById = async(req, res, next) => {
       res.status(200).json({
         success: true,
         message: 'Successfully added  lecture to course',
-        
+
       })
 
     } catch (error) {
@@ -221,11 +221,63 @@ const addLectureToCourseById = async(req, res, next) => {
     }
 }
 
+const removeLectureFromCourse = async(req, res, next) => {
+    try {
+        const { courseId, lectureId } = req.query;
+
+        if(!courseId || !lectureId) {
+            return next(
+                new AppError('Please provide both courseId and lectureId.', 400)
+            )
+        }
+       
+        const course = await Course.findById(courseId);
+
+        if(!course) {
+            return next(new AppError('Course not found', 404))
+        }
+
+        const lectureIndex = course.lectures.findIndex(
+            (lecture) => lecture._id.toString() === lectureId.toString()
+        )
+
+        if(lectureIndex === -1) {
+            return next(new AppError('Lecture does not exist', 404))
+        }
+
+        await cloudinary.v2.uploader.destroy(
+            course.lectures[lectureIndex].lecture.public_id,
+            {
+                resource_type: 'video',
+            }
+        );
+
+
+        course.lectures.splice(lectureIndex, 1);
+
+        course.numbersOfLectures = course.lectures.length;
+
+        await course.save();
+
+        res.status(200).json({
+            success: true,
+            message: 'Successfully removed lecture from course'
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message 
+        })
+    }
+}
+
 export {
     getAllCourses,
     getLecturesByCourseId,
     createCourse,
     updateCourse,
     removeCourse,
-    addLectureToCourseById
+    addLectureToCourseById,
+    removeLectureFromCourse
 }
