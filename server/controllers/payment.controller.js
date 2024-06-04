@@ -136,18 +136,60 @@ const cancelSubscription = async (req, res, next) => {
 }
 
 const allPayments = async (req, res, next) => {
-    const { count, skip } = req.query;
+   try {
+     const { count, skip } = req.query;
+ 
+     const allPayments = await razorpay.subscriptions.all({
+         count: count || 10,
+         skip: skip || 0,
+     });
 
-    const allPayments = await razorpay.subscriptions.all({
-        count: count || 10,
-        skip: skip || 0,
+
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+    ]
+
+    const finalMonths = {
+        January: 0, Febuary: 0, March: 0, April: 0, May: 0, June: 0, July: 0, August: 0, September: 0, October: 0, November: 0, December: 0
+    }
+
+
+    const monthlyWisePayments = allPayments.items.map((payment) => {
+        // payment.start_at is in unix time so we have to convert into total numbers of months
+        const monthsInNumbers = new Date(payment.start_at * 1000);  // total months from Unix epoch
+
+        return monthNames[monthsInNumbers.getMonth()]; // return the month name 
     });
 
-    res.status(200).json({
-        success: true,
-        message: 'All payments fetched successfully',
-        allPayments
+    monthlyWisePayments.map((month) => {
+        Object.keys(finalMonths).forEach((objMonth) => {
+            if(month === objMonth) {
+                finalMonths[month] += 1;
+            }
+        })
     })
+
+    const monthlySalesRecord = [];
+
+  Object.keys(finalMonths).forEach((monthName) => {
+    monthlySalesRecord.push(finalMonths[monthName]);
+  });
+
+
+ 
+     res.status(200).json({
+         success: true,
+         message: 'All payments fetched successfully',
+         allPayments,
+         finalMonths,
+         monthlySalesRecord
+     })
+   } catch (error) {
+    res.status(400).json({
+        success: false,
+        message: error
+    })
+   }
     
 }
 
