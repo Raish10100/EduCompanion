@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getRazorpayApiKey } from '../controllers/payment.controller.js'
+import { buySubscription, getRazorpayApiKey } from '../controllers/payment.controller.js'
 import { isLoggedIn } from "../middlewares/auth.middleware.js";
 
 const router = Router();
@@ -10,6 +10,13 @@ router
     .get(
         isLoggedIn,
         getRazorpayApiKey
+    );
+
+router
+    .route('/subscribe')
+    .post(
+        isLoggedIn,
+        buySubscription
     )
 
 
