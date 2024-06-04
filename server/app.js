@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.router.js'
 import errorMiddleware from './middlewares/error.middleware.js';
 import courseRoutes from './routes/course.router.js'
+import paymentsRoutes from './routes/payment.router.js'
 
 const app = express(); // creating instance of express
 
@@ -31,6 +32,9 @@ app.use('/api/v1/user', userRoutes);
 
 // course routes  prefixed with /api/v1/course
 app.use('/api/v1/courses', courseRoutes);
+
+// payments routes prefixed with api/v1/payments
+app.use('/api/v1/payments', paymentsRoutes);
 
 // if no routes are matched then send 404 page not found
 app.all('*', (req, res) => {
