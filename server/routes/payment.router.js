@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { buySubscription, getRazorpayApiKey, verifySubscription } from '../controllers/payment.controller.js'
+import { buySubscription, cancelSubscription, getRazorpayApiKey, verifySubscription } from '../controllers/payment.controller.js'
 import { isLoggedIn } from "../middlewares/auth.middleware.js";
 
 const router = Router();
@@ -26,5 +26,12 @@ router
         verifySubscription
     )
 
+
+router
+     .route('/unsubscribe')
+     .post(
+        isLoggedIn,
+        cancelSubscription
+     )
 
 export default router;

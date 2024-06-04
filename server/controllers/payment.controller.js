@@ -94,8 +94,50 @@ const verifySubscription = async (req, res, next) => {
     })
 }
 
+const cancelSubscription = async (req, res, next) => {
+   try {
+     const { id } = req.user;
+ 
+     const user = await User.findById(id);
+ 
+     if(!user) {
+         return next(
+             new AppError('User not found', 403)
+         )
+     }
+ 
+     if (user.role === 'ADMIN') {
+         return next(
+             new AppError('ADMIN is not allowed to cancel subscription', 401)
+         )
+     }
+ 
+ 
+     const subscriptionId = user.subscription.id;
+ 
+     const subscription = await razorpay.subscriptions.cancel(subscriptionId);
+ 
+     user.subscription.status = subscription.status;
+ 
+     await user.save();
+ 
+     res.status(200).json({
+        success: false,
+        message: 'Subscription cancelled successfully'
+     })
+ 
+   } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error
+        })
+   }
+
+}
+
 export {
     getRazorpayApiKey,
     buySubscription,
-    verifySubscription
+    verifySubscription,
+    cancelSubscription
 }
