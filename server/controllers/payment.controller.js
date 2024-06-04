@@ -135,9 +135,26 @@ const cancelSubscription = async (req, res, next) => {
 
 }
 
+const allPayments = async (req, res, next) => {
+    const { count, skip } = req.query;
+
+    const allPayments = await razorpay.subscriptions.all({
+        count: count || 10,
+        skip: skip || 0,
+    });
+
+    res.status(200).json({
+        success: true,
+        message: 'All payments fetched successfully',
+        allPayments
+    })
+    
+}
+
 export {
     getRazorpayApiKey,
     buySubscription,
     verifySubscription,
-    cancelSubscription
+    cancelSubscription,
+    allPayments
 }
