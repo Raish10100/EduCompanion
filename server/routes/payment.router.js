@@ -4,7 +4,6 @@ import { isLoggedIn } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
-
 router
     .route('/razorpay-key')
     .get(

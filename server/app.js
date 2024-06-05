@@ -12,7 +12,7 @@ const app = express(); // creating instance of express
 
 
 app.use(express.json());// for parsing incoming JSON payloads 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true })); // for parsing incoming URL-encoded payloads
 
 app.use(cors({ 
     origin: [process.env.FRONTEND_URL],
