@@ -1,3 +1,4 @@
+import User from "../models/user.model.js";
 import AppError from "../utils/error.util.js";
 import sendEmail from "../utils/sendEmail.js";
 
@@ -28,7 +29,23 @@ const contactUs = async (req, res, next) => {
     })
 }
 
+const userStats = async (req, res, next) => {
+    const allUsersCount = await User.countDocuments();
+
+    const subscribedUsersCount = await User.countDocuments({
+        'subscription.status' : 'active',
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "All registered users count",
+        allUsersCount,
+        subscribedUsersCount
+    })
+
+}
 
 export {
-    contactUs
+    contactUs,
+    userStats
 }
