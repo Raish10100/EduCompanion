@@ -1,6 +1,5 @@
-import { Routes } from "react-router-dom"
-import Footer from "./Components/footer"
-import HomeLayout from "./Layouts/HomeLayout"
+import { Route, Routes } from "react-router-dom"
+import HomePage from "./Pages/HomePage"
 
 import './App.css'
 
@@ -8,10 +7,9 @@ function App() {
 
   return (
     <div className="app">
-      {/* <Routes>
-        
-      </Routes> */}
-      <HomeLayout />
+      <Routes >
+           <Route path='/' element={<HomePage />} />
+      </Routes>
     </div>
   )
 }
