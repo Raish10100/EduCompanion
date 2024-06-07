@@ -28,10 +28,10 @@ function Drawer() {
                             </button>
                         </li>
                         <div className='  mt-[60px] flex flex-col gap-3 items-center'>
-                            <li><Link className="hover:text-[#3c8ff4] light:text-black  transition-all duration-300 ease-in-out">Home</Link></li>
+                            <li><Link className="hover:text-[#3c8ff4] light:text-black  transition-all duration-300 ease-in-out" to={'/'}>Home</Link></li>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">Admin Dashboard</Link></li>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">Courses</Link></li>
-                            <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">About Us</Link></li>
+                            <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/about'}>About Us</Link></li>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">Contact Us</Link></li>
                         </div>
                         <div className="  fixed bottom-[50px] flex items-center justify-center w-[90%] gap-1 ">

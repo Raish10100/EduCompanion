@@ -7,6 +7,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+
+    fontFamily: {
+      'Poppins': ['Poppins', 'sans-serif']
+    },
     extend: {
       screens: {
         'vs': '400px'
