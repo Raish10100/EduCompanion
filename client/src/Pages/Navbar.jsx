@@ -12,7 +12,7 @@ function Navbar() {
 
     const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
 
-    const role = useSelector((state) => state?.auth?.role);
+    // const role = useSelector((state) => state?.auth?.role);
 
 
         const [darkMode, setDarkMode] = useState(
@@ -57,8 +57,21 @@ function Navbar() {
                         <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out ">Contact Us</Link></li>
                     </ul>
                     <div className="lg:flex nav-hidden gap-3">
-                        <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm">Login</Link></button>
-                        <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all text-sm ease-in-out duration-300 text-white px-4 py-2 rounded-sm">Signup</Link></button>
+                        {
+                            isLoggedIn 
+                            ?
+                            <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm">LogOut</Link></button>
+                            :
+                            <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm">LogIn</Link></button>
+
+                        }
+                        {
+                            isLoggedIn 
+                            ?
+                            <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all text-sm ease-in-out duration-300 text-white px-4 py-2 rounded-sm">Profile</Link></button>
+                            :
+                            <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all text-sm ease-in-out duration-300 text-white px-4 py-2 rounded-sm">SignUp</Link></button>
+                        }
                     </div>
                 </div>
                 <Drawer />
