@@ -2,5 +2,15 @@
         margin: auto;
         max-width: 1440px;
         position: relative;
-        background: #12213b;  
+}
+
+.dark .socials {
+        color: #fff;
+}
+.light .socials {
+        color: #12213b;
+}
+
+.light .nav-links {
+        color: #12213b;
 }

@@ -13,6 +13,7 @@ export default {
       }
     },
   },
+  darkMode: 'class',
   plugins: [
     plugin(function ({ addUtilities }) {
       addUtilities({
