@@ -14,3 +14,8 @@
 .light .nav-links {
         color: #12213b;
 }
+
+.active-link {
+        color: #3c8ff4;
+        border-bottom: 2px solid #3c8ff4 ;
+}

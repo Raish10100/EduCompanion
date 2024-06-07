@@ -24,6 +24,17 @@ function Navbar() {
         }
         console.log(darkMode)
     
+        function addActiveClass () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach((link) => {
+                link.classList.remove('active-link');
+                if(link.getAttribute('href') === location.pathname) {
+                    link.classList.add('active-link');
+                }
+            })
+        }
+
+
         useEffect(() => {
             const element = document.querySelector("html");
             element.classList.remove("light", "dark");
@@ -34,7 +45,9 @@ function Navbar() {
               element.classList.add("light");
               localStorage.setItem("theme", "light");
             }
-        }, [darkMode]);
+
+            addActiveClass();
+        }, [darkMode, location]);
   
     return (
         
@@ -50,11 +63,11 @@ function Navbar() {
                             
                         }
                     <ul className="lg:flex nav-hidden gap-3 nav-links">
-                        <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out ">Home</Link></li>
-                        <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out ">Admin<span className="ml-[3px]">Dashboard</span></Link></li>
-                        <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out ">Courses</Link></li>
-                        <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out ">About Us</Link></li>
-                        <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out ">Contact Us</Link></li>
+                        <li><Link  className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out nav-link  hover:py-2 py-[14px] hover:border-b-2 border-[#3c8ff4]  " to={'/'}>Home</Link></li>
+                        <li><Link  className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out nav-link hover:py-2 py-[14px] hover:border-b-2 border-[#3c8ff4] " to={'/dashboard'}>Admin<span className="ml-[3px]">Dashboard</span></Link></li>
+                        <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out  nav-link hover:py-2 py-[14px] hover:border-b-2 border-[#3c8ff4]" to={'/courses'}>Courses</Link></li>
+                        <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out  nav-link hover:py-2 py-[14px] hover:border-b-2 border-[#3c8ff4]" to={'/about'}>About Us</Link></li>
+                        <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out  nav-link hover:py-2 py-[14px] hover:border-b-2 border-[#3c8ff4]" to={'/contact'}>Contact Us</Link></li>
                     </ul>
                     <div className="lg:flex nav-hidden gap-3">
                         {

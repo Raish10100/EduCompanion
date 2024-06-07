@@ -22,9 +22,9 @@ function Drawer() {
                 <div className="drawer-side ">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu  p-4 pt-7 h-[100%] min-w-[250px] max-w-[350px]  bg-white dark:bg-[#29303ea3] backdrop-blur-[8px] text-gray-500 font-inter dark:text-slate-50 md:text-[17px] text-base font-[600] relative">
-                        <li className="w-fit absolute right-2 z-50">
+                        <li className="w-fit absolute right-2 top-5 z-50">
                             <button onClick={hideDrawer}>
-                                <RxCross2 size={26} className="light:text-[#000000] font-extrabold hover:text-gray-600 text-red-600" />
+                                <RxCross2 size={34} className="light:text-[#000000] font-extrabold hover:text-gray-600 text-red-600" />
                             </button>
                         </li>
                         <div className='  mt-[60px] flex flex-col gap-3 items-center'>
@@ -34,7 +34,7 @@ function Drawer() {
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">About Us</Link></li>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">Contact Us</Link></li>
                         </div>
-                        <div className="  fixed bottom-[50px] flex items-center justify-center w-[90%] gap-1">
+                        <div className="  fixed bottom-[50px] flex items-center justify-center w-[90%] gap-1 ">
 
                             {
                                 isLoggedIn 

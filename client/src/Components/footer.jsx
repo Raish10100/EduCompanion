@@ -1,5 +1,5 @@
 import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin } from 'react-icons/bs'
-import { FaBriefcase } from 'react-icons/fa'
+import { FaBriefcase, FaGithub  } from 'react-icons/fa'
 function Footer() {
 
    
@@ -32,20 +32,20 @@ function Footer() {
                 <h2 className='font-bold text-2xl '>GET IN TOUCH</h2>
                 <p ><a href="https://mail.google.com/mail/?view=cm&fs=1&to=educompanion.it@gmail.com" target='_blank' className='hover:text-[#3c8ff4] hover:underline transition-all duration-300 ease-in-out '>educompanion.it@gmail.com</a></p>
                 <section className='socials flex justify-center items-center flex-wrap pb-3 gap-2 text-2xl text-white'>
+                    <a href="https://github.com/Raish10100/EduCompanion" target='_blank' className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
+                        <FaGithub  />
+                    </a>
                     <a href="https://www.linkedin.com/in/raish-vadaviya-439213289/" target='_blank' className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
                         <FaBriefcase />
                     </a>
-                    <a href="https://www.linkedin.com/in/raish-vadaviya-439213289/" target='_blank' className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
+                    <a href="https://x.com/RaishVadaviya" target='_blank' className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
                         <BsLinkedin />
                     </a>
-                    <a href="https://x.com/RaishVadaviya" target='_blank' className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
+                    <a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
                         <BsTwitter />
                     </a>
                     <a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
                         <BsFacebook />
-                    </a>
-                    <a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
-                        <BsInstagram />
                     </a>
                 </section>
                 </section>

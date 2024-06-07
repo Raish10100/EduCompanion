@@ -20,6 +20,9 @@ export default {
         '.nav-hidden': {     // I created an extra class since the "hidden" property in Tailwind CSS wasn't working pefectly.
           'display': 'none',
         },
+        '.item-hidden': {     // I created an extra class since the "hidden" property in Tailwind CSS wasn't working pefectly.
+          'display': 'none',
+        },
       })
     }),
     require('daisyui'),
