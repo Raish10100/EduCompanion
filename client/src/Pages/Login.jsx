@@ -1,0 +1,108 @@
+import { useState } from "react";
+import HomeLayout from "../Layouts/HomeLayout";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast'
+import { RxCross2 } from "react-icons/rx";
+import { useDispatch } from "react-redux";
+import { login } from "../Redux/Slices/AuthSlice";
+
+
+function Login(){
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+
+
+    // for user input
+    const [loginData, setLoginData] = useState({
+        email: "",
+        password: "",
+    })
+
+
+    // function to set the login data
+    const handleUserInput = (event) => {
+        const { name, value } = event.target;
+        setLoginData({
+            ...loginData,
+            [name]: value,
+        });
+    }
+
+   
+    // function to create account
+     const onLogin = async(event) => {
+        event.preventDefault();
+        // toast.success("trying to refresh page")
+        if(!loginData.email || !loginData.password){
+            toast.error('Please fill all the details');   
+            return;
+        }
+        
+
+      
+        // dispatch "create account" action
+        const response = await dispatch(login(loginData));
+        console.log(response)
+        if(response?.payload?.success) {
+            navigate('/')
+        }
+
+
+        // remove data from states
+        setLoginData({
+            email: "",
+            password: "",
+        })
+        setFileName("")
+
+    }
+
+  return (
+    <HomeLayout>
+      <div className="flex justify-center items-center h-[90vh] dark:bg-[#12213b] bg-[#e5e7eb] ">
+        <form
+          onSubmit={onLogin}
+        //   noValidate
+          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[40%]  flex-col flex justify-center items-center py-6 gap-10 rounded "
+        >
+          <h1 className="text-xl vs:text-3xl text-black dark:text-white font-bold">LogIn</h1>
+          <div className="fields w-[90%] flex flex-col justify-center items-center gap-6">
+            
+            <input
+              required
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              id="email"
+              className="px-3 py-3 w-[100%] outline-none dark:hover:border-[#fff] border-black transition-all ease-in-out duration-300 tracking-widest text-black  dark:text-white dark:border-[#ffffff91] text-md sm:text-xl  border-2 rounded bg-transparent placeholder:text-black placeholder:dark:text-white"
+              value={loginData.email}
+              onChange={handleUserInput}
+            />
+            <input
+              required
+              type="password"
+              placeholder="Password"
+              name="password"
+              id='password'
+              className="px-3 py-3 w-[100%] outline-none dark:hover:border-[#fff] border-black transition-all ease-in-out duration-300 tracking-widest text-black  dark:text-white dark:border-[#ffffff91] text-md sm:text-xl  border-2 rounded bg-transparent placeholder:text-black placeholder:dark:text-white"
+              value={loginData.password}
+              onChange={handleUserInput}
+            />
+            <button  type="submit" className="signup-btn dark:bg-[#ffffffe5] bg-[#000000] rounded text-white active:bg-[#000000a2] dark:active:bg-[#ffffff7f] transition-all ease-in-out duration-300 border-none px-3 py-3 w-[100%] dark:text-black font-semibold text-md sm:text-xl">
+              LogIn
+            </button>
+            <p className="text-black dark:text-white sm:text-lg">
+                Want to create account ?{" "}
+                <Link to={'/signup'} className="link text-[#463cfa] dark:hover:text-[#346560] hover:text-[#2f2b72] dark:text-accent cursor-pointer transition-all duration-300 ease-in-out">
+                    Signup
+                </Link>
+            </p>
+          </div>
+        </form>
+      </div>
+    </HomeLayout>
+  );
+
+}
+
+export default Login;

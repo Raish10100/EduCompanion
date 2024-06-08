@@ -75,7 +75,7 @@ function Navbar() {
                             ?
                             <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm">LogOut</Link></button>
                             :
-                            <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm">LogIn</Link></button>
+                            <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm" to={'/login'}>LogIn</Link></button>
 
                         }
                         {

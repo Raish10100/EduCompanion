@@ -21,6 +21,17 @@ export const createAccount = createAsyncThunk("/auth/register", async (data) => 
   }
 })
 
+export const login = createAsyncThunk("/auth/login", async (data) => {
+  const loadingMessage = toast.loading("Please wait! authentication is in progress...");
+  try {
+      const res = await axiosInstance.post("/user/login", data);
+      toast.success(res?.data?.message, { id: loadingMessage });// success toast replace the loading toast because they shared same id.
+      return res?.data
+  } catch (error) {
+      toast.error(error?.response?.data?.message, { id: loadingMessage });
+      throw error;
+  }
+})
 
 const authSlice = createSlice({
   name: 'auth',
@@ -29,5 +40,5 @@ const authSlice = createSlice({
 })
 
 
-export const { } = authSlice.actions
+// export const { } = authSlice.actions
 export default authSlice.reducer
