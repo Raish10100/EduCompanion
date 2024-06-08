@@ -12,8 +12,8 @@ const cookieOptions = {
 }
 
 const register = async (req, res, next) => {
+try {
     const { fullName, email, password } = req.body;
-
     if(!fullName || !email || !password) {
         return next(new AppError("All fields are required", 400));
     };
@@ -57,6 +57,7 @@ const register = async (req, res, next) => {
                 // Remove file from server
                 fs.rm(`uploads/${req.file.filename}`)
             }
+
         } catch (error) {
             return next(
                 new AppError(error || "File not uploaded, please try again", 400)
@@ -73,12 +74,18 @@ const register = async (req, res, next) => {
 
     res.cookie('token', token, cookieOptions); 
 
+
+// console.log(user) //!
     res.status(201).json({
         success: true,
         message: 'User registration successful',
         user,
     })
 
+} catch (error) {
+    console.log(error.message)
+    // console.log(user)
+}
 
 };
 

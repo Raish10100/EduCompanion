@@ -1,6 +1,6 @@
 .app{
         margin: auto;
-        max-width: 1440px;
+        max-width: 1540px;
         position: relative;
 }
 
@@ -15,7 +15,20 @@
         color: #12213b;
 }
 
+
 .active-link {
-        color: #3c8ff4;
-        border-bottom: 2px solid #3c8ff4 ;
+        color: #4088df;
+        border-bottom: 4px solid #0073ff ;
+        border-radius: 3px;
 }
+
+/* choose avatar hover effect */
+/* ffffff98 */
+
+.dark .custom-group-avatar:hover .avatar-btn-hover{
+        background-color: #ffffff98;
+}
+.light .custom-group-avatar:hover .avatar-btn-hover{
+        background-color: #000000b9;
+}
+

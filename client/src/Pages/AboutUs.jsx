@@ -6,7 +6,7 @@ function AboutUs(){
 
     return (
         <HomeLayout>
-            <div className="homePage vs:min-h-[600px]   flex justify-between items-center   px-[20px] ">
+            <div className="homePage vs:min-h-[600px]   flex justify-between items-center   px-[20px] dark:bg-transparent bg-[#e5e7eb] ">
                 <div className="w-[95%] lg:w-[60%] flex justify-center items-center my-[20px] flex-col gap-12 ">
                     <h1 className='text-4xl lg:item-hidden sm:text-5xl  vs:pb-[20px] font-semibold text-[#000] dark:text-white'>
                     About <span className='text-[#3d81d4] dark:text-[#3c8ff4]'>Us</span>

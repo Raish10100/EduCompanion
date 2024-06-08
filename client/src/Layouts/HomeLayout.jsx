@@ -8,7 +8,7 @@ function HomeLayout({ children }) {
 
 
     return (
-        <div  className="bg-white dark:bg-[#12213b]">
+        <div  className="bg-white dark:bg-[#12213b] shadow-2xl">
             <Navbar />
           
             {children}

@@ -39,16 +39,16 @@ function Drawer() {
                             {
                                 isLoggedIn 
                                 ?
-                                <button ><Link className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[6px] rounded-sm   hover:border-gray-300">LogOut</Link></button>
+                                <button ><Link className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[6px] rounded-sm   hover:border-gray-300 border-2">LogOut</Link></button>
                                 :
-                                <button ><Link className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[6px] rounded-sm  hover:border-gray-300">LogIn</Link></button>
+                                <button ><Link className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[6px] rounded-sm  hover:border-gray-300 border-2">LogIn</Link></button>
                             }
                             {
                                 isLoggedIn
                                 ?
                                 <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all ease-in-out duration-300 text-white px-7 py-[7px] rounded-sm">Profile</Link></button>
                                 :
-                                <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all ease-in-out duration-300 text-white px-7 py-[7px] rounded-sm">SignUp</Link></button>
+                                <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all ease-in-out duration-300 text-white px-7 py-[7px] rounded-sm" to={'/signup'}>SignUp</Link></button>
                             }
                         </div>
                     </ul>
