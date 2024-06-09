@@ -136,17 +136,17 @@ function SignUp() {
               value={signupData.password}
               onChange={handleUserInput}
             />
-            <div className=" w-[100%]  custom-group-avatar">
+            <div className=" vs:w-[100%] w-[100%]  text-wrap custom-group-avatar">
               <input
               onChange={getImage}
                 type="file"
-                className=" absolute  opacity-0 bg-black w-[250px] vs:max-w-[1000px] mt-4 ml-2 vs:px-8 sm:px-24 cursor-pointer"
+                className=" absolute  opacity-0 bg-black  overflow-x-hidden max-w-[100px] h-[40px] vs:max-w-[1000px] mt-4 vs:mt-3 ml-2 vs:px-8 sm:px-24 cursor-pointer"
                 id="image_uploads"
                 accept=".jpg, .jpeg, .png"
               />
               <button className=" flex justify-between flex-wrap px-3 py-3 w-[100%]   tracking-widest border-black   dark:border-[#ffffff91] border-2 text-md sm:text-xl rounded bg-transparent cursor-pointer">
-                <span className="avatar-btn-hover bg-black text-white dark:bg-[#ffffffd0] transition-all ease-in-out duration-300   dark:text-black tracking-normal px-2 py-1 cursor-pointer rounded font-semibold">
-                { fileName ? `Avatar: ${fileName}` : "Choose your avatar"}
+                <span className="avatar-btn-hover bg-black  text-white text-wrap  dark:bg-[#ffffffd0] transition-all ease-in-out duration-300   dark:text-black tracking-normal px-2 py-1 cursor-pointer rounded font-semibold">
+                { fileName ? `Avatar:  ${fileName}` : "Choose your avatar "}
                 </span>
                 <span className="dark:text-[#5f6cf6] text-[#e45f5f] font-bold">{fileName ? "" :"(Optional)"}</span>
               </button>

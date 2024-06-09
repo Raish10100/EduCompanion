@@ -33,19 +33,54 @@ export const login = createAsyncThunk("/auth/login", async (data) => {
   }
 })
 
+export const logout = createAsyncThunk('/auth/logout', async () =>{ 
+  const loadingMessage = toast.loading('Please wait! logout is in progress...')
+  try {
+    const res = await axiosInstance.get('/user/logout');
+    toast.success(res?.data?.message, { id: loadingMessage });
+    return res?.data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message, {id: loadingMessage})
+  }
+})
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) => {
-      localStorage.setItem("data", JSON.stringify(action?.payload?.user));
-      localStorage.setItem('isLoggedIn', true);
-      localStorage.setItem("role", action?.payload?.user?.role);
-      state.isLoggedIn = true;
-      state.data = action?.payload?.user;
-      state.role = action?.payload?.user?.role;
+
+    // for signup
+    builder.addCase(createAccount.fulfilled, (state, action) => {
+          localStorage.setItem("data", JSON.stringify(action?.payload?.user));
+          localStorage.setItem('isLoggedIn', true);
+          localStorage.setItem("role", action?.payload?.user?.role);
+          state.isLoggedIn = true;
+          state.data = action?.payload?.user;
+          state.role = action?.payload?.user?.role;
     })
+    
+    // for login    
+    builder.addCase(login.fulfilled, (state, action) => {
+          localStorage.setItem("data", JSON.stringify(action?.payload?.user));
+          localStorage.setItem('isLoggedIn', true);
+          localStorage.setItem("role", action?.payload?.user?.role);
+          state.isLoggedIn = true;
+          state.data = action?.payload?.user;
+          state.role = action?.payload?.user?.role;
+    });
+
+    // for logout
+    builder.addCase(logout.fulfilled, (state) => {
+          localStorage.removeItem("data");
+          localStorage.removeItem("role");
+          localStorage.removeItem("isLoggedIn");
+          state.data = {};
+          state.role = "";
+          state.isLoggedIn = false;
+    });
+
+    
   }
 })
 

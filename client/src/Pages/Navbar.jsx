@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Drawer from "../Pages/Drawer";
 import { CiLight } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from '../Redux/Slices/AuthSlice';
 
 
 function Navbar() {
@@ -30,6 +31,16 @@ function Navbar() {
                     link.classList.add('active-link');
                 }
             })
+        }
+
+        // logout handler
+       async function handleLogout(e) {
+            e.preventDefault();
+
+            const res = await dispatch(logout())
+            if(res?.payload?.success) {
+                navigate('/')
+            }
         }
 
 
@@ -73,7 +84,7 @@ function Navbar() {
                         {
                             isLoggedIn 
                             ?
-                            <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm">LogOut</Link></button>
+                            <button ><Link onClick={handleLogout} className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm">LogOut</Link></button>
                             :
                             <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm" to={'/login'}>LogIn</Link></button>
 

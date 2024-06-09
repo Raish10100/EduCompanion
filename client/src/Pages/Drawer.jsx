@@ -1,15 +1,29 @@
 import { FiMenu } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../Redux/Slices/AuthSlice";
 
 function Drawer() {
   
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+
     const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
 
     const hideDrawer = () => {
         const element = document.getElementsByClassName('drawer-toggle');
         element[0].checked = false;
+    }
+
+    // logout handler
+    async function handleLogout(e) {
+        e.preventDefault();
+
+        const res = await dispatch(logout())
+        if(res?.payload?.success) {
+            navigate('/')
+        }
     }
 
     return (
@@ -39,7 +53,7 @@ function Drawer() {
                             {
                                 isLoggedIn 
                                 ?
-                                <button ><Link className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[6px] rounded-sm   hover:border-gray-300 border-2">LogOut</Link></button>
+                                <button ><Link onClick={handleLogout} className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[6px] rounded-sm   hover:border-gray-300 border-2">LogOut</Link></button>
                                 :
                                 <button ><Link className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[6px] rounded-sm  hover:border-gray-300 border-2" to={'/login'}>LogIn</Link></button>
                             }
