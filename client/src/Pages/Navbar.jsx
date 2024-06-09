@@ -17,6 +17,7 @@ function Navbar() {
         const [darkMode, setDarkMode] = useState(
             localStorage.getItem("theme") === "dark"
         );
+        console.log(darkMode)
 
         const toggleDarkMode = () => {
             setDarkMode((prev) => !prev);
@@ -47,7 +48,7 @@ function Navbar() {
         useEffect(() => {
             const element = document.querySelector("html");
             element.classList.remove("light", "dark");
-            if (darkMode) {
+            if (darkMode || localStorage.theme == undefined) {
                 console.log('darkMode')
               element.classList.add("dark");
               localStorage.setItem("theme", "dark");
