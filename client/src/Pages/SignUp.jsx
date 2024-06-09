@@ -140,7 +140,7 @@ function SignUp() {
               <input
               onChange={getImage}
                 type="file"
-                className=" absolute  opacity-0 bg-black max-w-[1000px] mt-4 ml-2 vs:px-8 sm:px-24 cursor-pointer"
+                className=" absolute  opacity-0 bg-black w-[250px] vs:max-w-[1000px] mt-4 ml-2 vs:px-8 sm:px-24 cursor-pointer"
                 id="image_uploads"
                 accept=".jpg, .jpeg, .png"
               />

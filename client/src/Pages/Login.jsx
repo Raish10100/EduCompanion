@@ -1,8 +1,7 @@
 import { useState } from "react";
 import HomeLayout from "../Layouts/HomeLayout";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast'
-import { RxCross2 } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 import { login } from "../Redux/Slices/AuthSlice";
 
@@ -12,7 +11,7 @@ function Login(){
     const navigate = useNavigate()
 
 
-    // for user input
+    // store login data 
     const [loginData, setLoginData] = useState({
         email: "",
         password: "",
@@ -29,10 +28,9 @@ function Login(){
     }
 
    
-    // function to create account
-     const onLogin = async(event) => {
+    // login handler function
+      const onLogin = async(event) => {
         event.preventDefault();
-        // toast.success("trying to refresh page")
         if(!loginData.email || !loginData.password){
             toast.error('Please fill all the details');   
             return;
@@ -40,7 +38,7 @@ function Login(){
         
 
       
-        // dispatch "create account" action
+        // dispatch "login" AsyncThunk
         const response = await dispatch(login(loginData));
         console.log(response)
         if(response?.payload?.success) {
@@ -53,7 +51,6 @@ function Login(){
             email: "",
             password: "",
         })
-        setFileName("")
 
     }
 
