@@ -15,7 +15,7 @@ function Navbar() {
 
 
         const [darkMode, setDarkMode] = useState(
-            localStorage.getItem("theme") === ""
+            localStorage.getItem("theme") === "dark"
         );
 
         const toggleDarkMode = () => {
@@ -47,7 +47,7 @@ function Navbar() {
         useEffect(() => {
             const element = document.querySelector("html");
             element.classList.remove("light", "dark");
-            if (darkMode == "") {
+            if (darkMode) {
                 console.log('darkMode')
               element.classList.add("dark");
               localStorage.setItem("theme", "dark");
@@ -66,7 +66,7 @@ function Navbar() {
                 <p className="Logo font-semibold text-xl vs:text-3xl order-2 dark:text-[#fff] text-[#12213b]">EduCompanion</p>
                 <div className="theme-mode flex lg:gap-7 items-center order-3 ">
                         {
-                            !darkMode
+                            darkMode
                         ? 
                              <CiLight onClick={() => toggleDarkMode()}  className="cursor-pointer dark:text-[#fff] text-[#12213b] hover:bg-[#24324c9f] py-2 text-[45px] lg:text-[40px] transition-all ease-in-out duration-300 rounded-sm" />
                         :       
