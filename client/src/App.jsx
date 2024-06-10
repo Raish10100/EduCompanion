@@ -9,6 +9,7 @@ import Login from "./Pages/Login"
 import CourseList from "./Pages/Course/CourseList"
 import Contact from "./Pages/Contact"
 import Denied from "./Pages/Denied"
+import CourseDescription from "./Pages/Course/CourseDescription"
 
 function App() {
 
@@ -17,13 +18,15 @@ function App() {
       <Routes >
            <Route path='/' element={<HomePage />} />
            <Route path='/about' element={<AboutUs />} />
-            <Route path='/courses' element={<CourseList />} />
             <Route path='/contact' element={<Contact />} />
-            <Route path='/denied' element={<Denied/>} />
 
            <Route path='/signup' element={<SignUp />} />
             <Route path='/login' element={<Login/>} />
 
+            <Route path='/courses' element={<CourseList />} />
+            <Route path='/course/description' element={<CourseDescription />} />
+
+            <Route path='/denied' element={<Denied/>} />
            <Route path='/*' element={<NotFound />} />
       </Routes>
     </div>

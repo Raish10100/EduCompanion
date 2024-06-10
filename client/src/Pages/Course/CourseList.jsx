@@ -13,7 +13,6 @@ function CourseList() {
     const { courseData } = useSelector((state) => state.course);
 
     async function loadCourses() {
-        // toast("trying to fetch courses data");
         await dispatch(getAllCourses());
     };
 
@@ -31,14 +30,8 @@ function CourseList() {
                         Discover courses crafted by leading  
                         <span className="font-bold text-[#308ff4]"> industry professionals</span>
                     </h1>
-                    {/* <p className="text-center sm:text-lg text-[13px] text-semibold dark:text-[#ffffffc2] vs:text-[15px] w-[80%]  sm:w-[70%] lg:w-[40%] tracking-wide">
-                        Learn from the best in the field and advance your career with top-notch content and practical skills. 
-                    </p> */}
                 </div>
                 <div className="flex gap-8 justify-center items-center  flex-wrap pb-20 px-4   ">
-                    {/* <CourseCard />
-                    <CourseCard/>
-                    <CourseCard/> */}
                     {courseData.map((course, index) => {
                         return <CourseCard key={index} data={course} />
                     })}
