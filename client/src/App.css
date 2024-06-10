@@ -22,9 +22,6 @@
         border-radius: 3px;
 }
 
-/* choose avatar hover effect */
-/* ffffff98 */
-
 .dark .custom-group-avatar:hover .avatar-btn-hover{
         background-color: #ffffff98;
 }
