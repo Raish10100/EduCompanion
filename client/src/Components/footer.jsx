@@ -1,5 +1,6 @@
 import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin } from 'react-icons/bs'
 import { FaBriefcase, FaGithub  } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 function Footer() {
 
    
@@ -14,18 +15,18 @@ function Footer() {
             <section className='flex flex-col gap-3 justify-center items-center sm:items-start'>
                 <h2 className='font-bold text-2xl'>Quick Links</h2>
                 <ul className='flex flex-col sm:items-start items-center gap-3 mt-3'>
-                    <li><a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Home</a></li>
-                    <li><a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Courses</a></li>
-                    <li><a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>About Us</a></li>
-                    <li><a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Contact</a></li>
+                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/"}>Home</Link></li>
+                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/courses"}>Courses</Link></li>
+                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/about"}>About Us</Link></li>
+                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/contact"}>Contact</Link></li>
                 </ul>
             </section>
             <section className='flex flex-col gap-3 justify-center items-center sm:items-start'>
                 <h2 className='font-bold text-2xl'>Legal</h2>
                 <ul className='flex flex-col sm:items-start gap-3 items-center mt-3'>
-                   <li><a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Refund & Cancellation Policy</a></li>
-                   <li><a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Privacy Policy</a></li>
-                   <li><a href="" className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Terms of use</a></li>
+                   <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Refund & Cancellation Policy</Link></li>
+                   <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Privacy Policy</Link></li>
+                   <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Terms of use</Link></li>
                 </ul>
             </section>
             <section className='flex flex-col gap-6 justify-center items-center sm:items-start'>

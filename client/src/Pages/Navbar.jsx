@@ -85,17 +85,17 @@ function Navbar() {
                         {
                             isLoggedIn 
                             ?
-                            <button ><Link onClick={handleLogout} className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm">LogOut</Link></button>
+                            <button ><Link onClick={handleLogout} className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]">LogOut</Link></button>
                             :
-                            <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm" to={'/login'}>LogIn</Link></button>
+                            <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]" to={'/login'}>LogIn</Link></button>
 
                         }
                         {
                             isLoggedIn 
                             ?
-                            <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all text-sm ease-in-out duration-300 text-white px-4 py-2 rounded-sm">Profile</Link></button>
+                            <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all text-sm ease-in-out duration-300 text-white px-4 py-2 rounded-sm ">Profile</Link></button>
                             :
-                            <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all text-sm ease-in-out duration-300 text-white px-4 py-2 rounded-sm" to={'/signup'}>SignUp</Link></button>
+                            <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all text-sm ease-in-out duration-300 text-white px-4 py-2 rounded-sm " to={'/signup'}>SignUp</Link></button>
                         }
                     </div>
                 </div>

@@ -19,7 +19,7 @@ function AboutUs(){
                         Our platform offers interactive courses and diverse learning materials. We aim to empower individuals with the knowledge and skills for success.
                     </p>
                     <div className="flex flex-row  flex-wrap gap-8 sm:gap-2 sm:mt-12 pb-[20px] w-[100%]  justify-center lg:justify-start ">
-                        <button><Link className="border-2  border-gray-500 shadow-2xl hover:border-gray-200 transition-all ease-in-out duration-300 text-[#0c0303eb] dark:text-white sm:px-20 px-6 py-2 sm:py-4 rounded-sm text-2xl">Contact Us</Link></button>
+                        <button><Link className="border-2  border-gray-500 shadow-2xl hover:border-gray-200 transition-all ease-in-out duration-300 text-[#0c0303eb] dark:text-white sm:px-20 px-6 py-2 sm:py-4 rounded-sm text-2xl hover:bg-[#4076d330]">Contact Us</Link></button>
                     </div>
                 </div>
                 <div className=" justify-center items-center item-hidden lg:block">

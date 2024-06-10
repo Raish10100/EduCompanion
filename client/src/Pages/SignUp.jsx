@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import { RxCross2 } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 import { createAccount } from "../Redux/Slices/AuthSlice";
+import { isValidEmail, isValidPassword } from "../Helpers/RegexMatcher";
 
 function SignUp() {
 
@@ -61,11 +62,11 @@ function SignUp() {
            return toast.error("Name should be atleast 5 charactor long")
         }
         // checking email
-        if(!signupData.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+        if(!isValidEmail(signupData.email)){
            return toast.error("Invalid email id")
         }
         // checking password
-        if(signupData.password.length < 8 || signupData.password.length > 16) {
+        if(signupData.password.length < 8 || signupData.password.length > 16 || !isValidPassword(signupData.password)) {
           return  toast.error('Password length must be between 8 and 16 characters')
         }
         

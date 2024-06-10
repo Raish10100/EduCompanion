@@ -46,16 +46,16 @@ function Drawer() {
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">Admin Dashboard</Link></li>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/courses'} >Courses</Link></li>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/about'}>About Us</Link></li>
-                            <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">Contact Us</Link></li>
+                            <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/contact'}>Contact Us</Link></li>
                         </div>
                         <div className="  fixed bottom-[50px] flex items-center justify-center w-[90%] gap-1 ">
 
                             {
                                 isLoggedIn 
                                 ?
-                                <button ><Link onClick={handleLogout} className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[6px] rounded-sm   hover:border-gray-300 border-2">LogOut</Link></button>
+                                <button ><Link onClick={handleLogout} className="bg-transparent hover:bg-[#4076d330] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[6px] rounded-sm   hover:border-gray-300  border-2">LogOut</Link></button>
                                 :
-                                <button ><Link className="bg-[#fff] hover:bg-[#ffffffd5] transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[6px] rounded-sm  hover:border-gray-300 border-2" to={'/login'}>LogIn</Link></button>
+                                <button ><Link className="bg-transparent hover:bg-[#4076d330]  transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[6px] rounded-sm  hover:border-gray-300  border-2" to={'/login'}>LogIn</Link></button>
                             }
                             {
                                 isLoggedIn
