@@ -22,6 +22,10 @@
         border-radius: 3px;
 }
 
+.admin-submenu{
+        border-bottom: 0 ;
+}
+
 .dark .custom-group-avatar:hover .avatar-btn-hover{
         background-color: #ffffff98;
 }

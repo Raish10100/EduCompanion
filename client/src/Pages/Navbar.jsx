@@ -5,14 +5,14 @@ import Drawer from "../Pages/Drawer";
 import { CiLight } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from '../Redux/Slices/AuthSlice';
+import { MdArrowDropDown } from "react-icons/md";
 
 
 function Navbar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
-
+    const { isLoggedIn, role }  = useSelector(state => state?.auth)
 
         const [darkMode, setDarkMode] = useState(
             localStorage.getItem("theme") === "dark"
@@ -23,6 +23,19 @@ function Navbar() {
             setDarkMode((prev) => !prev);
         }
         // console.log(darkMode)
+
+
+        const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+
+        // handle for navbar sub-menu
+        const handleMouseEnter = () => {
+          setIsSubmenuOpen(true);
+        };
+      
+        const handleMouseLeave = () => {
+          setIsSubmenuOpen(false);
+        };
+
     
         function addActiveClass () {
             const navLinks = document.querySelectorAll('.nav-link');
@@ -74,9 +87,26 @@ function Navbar() {
                             <MdOutlineDarkMode onClick={() => toggleDarkMode()}  className="cursor-pointer dark:text-[#fff] text-[#12213b] hover:bg-[#12213b3e] py-2 lg:text-[40px] text-[45px]  transition-all ease-in-out duration-300 rounded-sm"/>
                             
                         }
-                    <ul className="lg:flex nav-hidden gap-3 nav-links">
+                    <ul className="lg:flex nav-hidden gap-5 nav-links">
                         <li><Link  className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out nav-link  hover:py-4 py-[14px] hover:border-b-2 border-[#3c8ff4]  " to={'/'}>Home</Link></li>
-                        <li><Link  className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out nav-link hover:py-4 py-[14px] hover:border-b-2 border-[#3c8ff4] " to={'/dashboard'}>Admin<span className="ml-[3px]">Dashboard</span></Link></li>
+
+                      <li 
+                                className='relative'
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <Link className="admin-submenu  dark:hover:text-[#3c8ff4] hover:text-[#3c8ff4] dark:text-white text-black  transition-all text-sm duration-300 ease-in-out nav-link py-8 ">Admin Panel<MdArrowDropDown className='inline text-xl ml-[-1px] font-bold '/></Link>
+                                {
+                                    isSubmenuOpen && (
+                                        <ul className='absolute left-[-20px] mt-1 w-[160px] pl-6 py-2 space-y-2 text-white  dark:bg-[#213049] bg-[#3d81d4] shadow-lg rounded border-2 border-black  dark:border-white'>
+                                            <li><Link  className="dark:hover:text-[#3c8ff4] hover:text-gray-300  transition-all text-sm duration-300 ease-in-out nav-link text-center w-full" to={'/admin/dashboard'}>Admin<span className="ml-[3px]">Dashboard</span></Link></li>
+                                            <li><Link  className="dark:hover:text-[#3c8ff4] hover:text-gray-300  transition-all text-sm duration-300 ease-in-out nav-link text-center" to={'/course/create'}>Create<span className="ml-[3px]">Course</span></Link></li>
+                                        </ul>
+                                    )
+                                }
+                            </li>
+
+
                         <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out  nav-link hover:py-4 py-[14px] hover:border-b-2 border-[#3c8ff4]" to={'/courses'}>Courses</Link></li>
                         <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out  nav-link hover:py-4 py-[14px] hover:border-b-2 border-[#3c8ff4]" to={'/about'}>About Us</Link></li>
                         <li><Link className="hover:text-[#3c8ff4]  transition-all text-sm duration-300 ease-in-out  nav-link hover:py-4 py-[9px] hover:border-b-2 border-[#3c8ff4]" to={'/contact'}>Contact Us</Link></li>
@@ -85,9 +115,9 @@ function Navbar() {
                         {
                             isLoggedIn 
                             ?
-                            <button ><Link onClick={handleLogout} className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]">LogOut</Link></button>
+                            <button ><Link onClick={handleLogout} className=" hover:border-gray-500 border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]">LogOut</Link></button>
                             :
-                            <button ><Link className=" border-gray-500 hover:border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]" to={'/login'}>LogIn</Link></button>
+                            <button ><Link className=" hover:border-gray-500 border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]" to={'/login'}>LogIn</Link></button>
 
                         }
                         {

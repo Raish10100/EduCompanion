@@ -9,7 +9,7 @@ function Drawer() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
+    const { isLoggedIn, role }  = useSelector(state => state?.auth)
 
     const hideDrawer = () => {
         const element = document.getElementsByClassName('drawer-toggle');
@@ -43,7 +43,18 @@ function Drawer() {
                         </li>
                         <div className='  mt-[60px] flex flex-col gap-3 items-center'>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black  transition-all duration-300 ease-in-out" to={'/'}>Home</Link></li>
-                            <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out">Admin Dashboard</Link></li>
+                            
+                            {
+                                isLoggedIn && role === 'ADMIN' && (
+                                    <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/admin/dashboard'}>Admin Dashboard</Link></li>
+                                )
+                            }
+                            {
+                                isLoggedIn && role === 'ADMIN' && (
+                                    <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'course/create'}>Create Course</Link></li>
+                                )
+                            }
+
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/courses'} >Courses</Link></li>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/about'}>About Us</Link></li>
                             <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/contact'}>Contact Us</Link></li>
