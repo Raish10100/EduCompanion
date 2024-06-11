@@ -16,7 +16,7 @@ function Denied() {
                 We apologize, but you are not authorized to view this content.
             </p>
             <div className="flex flex-row justify-center flex-wrap   w-[100%]  gap-2  mt-8 ">
-                <button ><Link className=" bg-[#ef3d5a]  rounded-3xl hover:bg-[#f35b5ba8]    transition-all ease-in-out duration-300 text-gray-300  px-6 py-2 lg:text-xl" onClick={() => Navigate(-1)}>Go Back</Link></button>
+                <button ><Link className=" bg-[#ef3d5a]  rounded-3xl hover:bg-[#f35b5ba8] transition-all ease-in-out duration-300 text-gray-300  px-6 py-2 lg:text-xl" onClick={() => Navigate(-1)}>Go Back</Link></button>
             </div>
         </div>
     )
