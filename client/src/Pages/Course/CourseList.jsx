@@ -16,7 +16,6 @@ function CourseList() {
         await dispatch(getAllCourses());
     };
 
-    console.log(courseData)
 
     useEffect(() => {
         loadCourses();

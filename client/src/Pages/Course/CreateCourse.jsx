@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createNewCourse } from "../../Redux/Slices/CourseSlice";
 import HomeLayout from "../../Layouts/HomeLayout";
@@ -70,11 +70,11 @@ function CreateCourse() {
      return
     }
 
-    
+
     setIsCreatingCourse(true);
 
-    const response = await dispatch(createNewCourse(userInput));
-    if (response?.payload?.success) {
+    const response = await dispatch(createNewCourse(userInput, dispatch));
+    if (response?.payload?.data?.success) {
       setUserInput({
         title: "",
         category: "",
@@ -85,9 +85,12 @@ function CreateCourse() {
       });
     }
 
-    setIsCreatingCourse(false)
+    console.log(response)
+    toast.success("Course created successfully", { id: response?.payload?.loadingMessageId});
+    setIsCreatingCourse(false);
 
-//     navigate("/courses");
+
+    navigate("/courses");
   };
 
   return (

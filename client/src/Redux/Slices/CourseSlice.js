@@ -7,24 +7,24 @@ const initialState = {
 }
 
 
-
 export const getAllCourses = createAsyncThunk("/course/get", async () => {
-        const loadingMessage = toast.loading("Please wait! fetching courses data...");
-  
+
+        // const loadingMessage = toast.loading("Please wait! fetching courses data...");
     try{
         const response = await axiosInstance.get("/courses");
-        toast.success(response?.data?.message, { id: loadingMessage })
-        // console.log(response)
+        // toast.success(response?.data?.message, { id: loadingMessage })
         return response?.data?.courses;
     }
     catch (error) {
-        toast.error(error?.response?.data?.message, { id: loadingMessage });
+        // toast.error(error?.response?.data?.message, { id: loadingMessage });
         throw error
     }
 });
 
-export const createNewCourse = createAsyncThunk("/course/create", async (data) => {
+export const createNewCourse = createAsyncThunk("/course/create", async (data, dispatch) => {
     const loadingMessage = toast.loading("Please wait! creating new course...");
+console.log(loadingMessage)
+
     try {
         const formData = new FormData();
         formData.append("title", data?.title);
@@ -33,10 +33,13 @@ export const createNewCourse = createAsyncThunk("/course/create", async (data) =
         formData.append("createdBy", data?.createdBy);
         formData.append("thumbnail", data?.thumbnail);
 
-        const response = axiosInstance.post("/courses", formData);
-        toast.success("Course created successfully", { id: loadingMessage});
+        const response = await axiosInstance.post("/courses", formData);
+        // toast.success("Course created successfully", { id: loadingMessage});
 
-        return (await response).data;
+        return {
+            data: response?.data,
+            loadingMessageId: loadingMessage
+        };
 
     } catch (error) {
         toast.error("Failed to create course", { id: loadingMessage});
