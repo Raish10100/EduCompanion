@@ -32,11 +32,11 @@ export const createNewCourse = createAsyncThunk("/course/create", async (data) =
         formData.append("createdBy", data?.createdBy);
         formData.append("thumbnail", data?.thumbnail);
 
-        const response = await axiosInstance.post("/courses", formData);
+        const response =  axiosInstance.post("/courses", formData);
         // toast.success("Course created successfully", { id: loadingMessage});
 
         return {
-            data: response?.data,
+            data: (await response)?.data,
             loadingMessageId: loadingMessage
         };
 

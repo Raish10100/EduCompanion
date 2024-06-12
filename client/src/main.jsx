@@ -11,7 +11,7 @@ import { Toaster } from 'react-hot-toast'
 
 
 const toastOptions ={
-  duration: 2000,
+  // duration: 2000,
   style: {
     width: '300px',
     fontSize: '16px',

@@ -51,7 +51,7 @@ function Drawer() {
                             }
                             {
                                 isLoggedIn && role === 'ADMIN' && (
-                                    <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'course/create'}>Create Course</Link></li>
+                                    <li><Link className="hover:text-[#3c8ff4] light:text-black transition-all duration-300 ease-in-out" to={'/course/create'}>Create Course</Link></li>
                                 )
                             }
 
