@@ -50,6 +50,7 @@ function Contact() {
                     })
                 }
         } catch (error) {
+          setIsLoading(false)
             toast.error("Operation failed...", { id: loadingMessage})
         }
     }
