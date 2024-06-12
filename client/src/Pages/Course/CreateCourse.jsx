@@ -33,7 +33,7 @@ function CreateCourse() {
           thumbnail: uploadedImg,
         });
       });
-      console.log(`fileReader img: ${fileReader.result}`);
+      // console.log(`fileReader img: ${fileReader.result}`);
     }
   };
 
@@ -82,13 +82,14 @@ function CreateCourse() {
         thumbnail: null,
         previewImage: "",
       });
+
+      toast.success("Course created successfully", { id: response?.payload?.loadingMessageId});
     }
 
-    // console.log(response)
-    toast.success("Course created successfully", { id: response?.payload?.loadingMessageId});
+    console.log(response)
     setIsCreatingCourse(false);
     
-    navigate("/courses");
+    // navigate("/courses");
   };
 
   return (
