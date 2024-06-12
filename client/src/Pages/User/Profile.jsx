@@ -72,7 +72,7 @@ function Profile() {
                Change Password
                </button>
                <button  type="submit" className="signup-btn dark:bg-[#ffffffe5] bg-[#000000] rounded text-white active:bg-[#000000a2] dark:active:bg-[#ffffff7f] transition-all ease-in-out duration-300 border-none px-3 py-1 w-[50%] dark:text-black font-semibold text-md sm:text-xl">
-               Edit Profile
+               <Link to={"/user/editprofile"}>Edit Profile</Link>
                </button>
            </div>
             {

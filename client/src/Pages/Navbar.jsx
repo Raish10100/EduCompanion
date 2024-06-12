@@ -72,7 +72,7 @@ function Navbar() {
   }, [darkMode, location]);
 
   return (
-    <nav className="sticky top-0 z-50  flex justify-between items-center px-[3px] sm:px-[10px] md:px-[20px] py-[20px]  bg-[#e5e7eb] dark:bg-[#12213b] text-white border-b-2 border-gray-600 ">
+    <nav className="sticky top-0 z-50  flex justify-between items-center px-[10px] md:px-[20px] py-[20px]  bg-[#e5e7eb] dark:bg-[#12213b] text-white border-b-2 border-gray-600 ">
       <p className="Logo font-semibold text-xl vs:text-3xl order-2 dark:text-[#fff] text-[#12213b]">
         EduCompanion
       </p>

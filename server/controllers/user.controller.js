@@ -174,7 +174,7 @@ const forgotPassword = async (req, res, next) => {
     const message = `
                         <p>We recently received a request to reset the password for your account. If you requested this reset, click the button below to create a new password.</p>
                         <br/>
-                        <a href="${resetPasswordURL}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none;">
+                        <a href="${resetPasswordURL}" style="background-color: #3763da; color: white; padding: 10px 20px; text-decoration: none;">
                         Set a New Password
                         </a>
                         <br/>
