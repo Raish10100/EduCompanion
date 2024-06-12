@@ -66,7 +66,7 @@ function SignUp() {
            return toast.error("Invalid email id")
         }
         // checking password
-        if(signupData.password.length < 8 || signupData.password.length > 16 || !isValidPassword(signupData.password)) {
+        if(signupData.password.length < 8 || signupData.password.length > 16 ) {
           return  toast.error('Password length must be between 8 and 16 characters')
         }
         
@@ -99,7 +99,7 @@ function SignUp() {
 
   return (
     <HomeLayout>
-      <div className="flex justify-center items-center  py-10 dark:bg-[#12213b] bg-[#e5e7eb] ">
+      <div className="flex justify-center items-center  py-10 dark:bg-[#12213b] bg-[#e5e7eb] lg:h-[90vh] ">
         <form
           onSubmit={createNewAccount}
         //   noValidate

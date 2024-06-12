@@ -64,14 +64,14 @@ function Drawer() {
                             {
                                 isLoggedIn 
                                 ?
-                                <button ><Link onClick={handleLogout} className="bg-transparent hover:bg-[#4076d330] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[6px] rounded-sm   hover:border-gray-300  border-2">LogOut</Link></button>
+                                <button ><Link onClick={handleLogout} className="bg-transparent hover:bg-[#4076d330] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[4px] rounded-sm   hover:border-gray-300  border-2">LogOut</Link></button>
                                 :
-                                <button ><Link className="bg-transparent hover:bg-[#4076d330]  transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[6px] rounded-sm  hover:border-gray-300  border-2" to={'/login'}>LogIn</Link></button>
+                                <button ><Link className="bg-transparent hover:bg-[#4076d330]  transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[4px] rounded-sm  hover:border-gray-300  border-2" to={'/login'}>LogIn</Link></button>
                             }
                             {
                                 isLoggedIn
                                 ?
-                                <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all ease-in-out duration-300 text-white px-7 py-[7px] rounded-sm">Profile</Link></button>
+                                <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all ease-in-out duration-300 text-white px-7 py-[7px] rounded-sm" to={'/user/profile'}>Profile</Link></button>
                                 :
                                 <button><Link className="bg-[#3c8ff4] hover:bg-[#3c6df4db] transition-all ease-in-out duration-300 text-white px-7 py-[7px] rounded-sm" to={'/signup'}>SignUp</Link></button>
                             }

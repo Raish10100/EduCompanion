@@ -21,9 +21,8 @@ export const getAllCourses = createAsyncThunk("/course/get", async () => {
     }
 });
 
-export const createNewCourse = createAsyncThunk("/course/create", async (data, dispatch) => {
+export const createNewCourse = createAsyncThunk("/course/create", async (data) => {
     const loadingMessage = toast.loading("Please wait! creating new course...");
-console.log(loadingMessage)
 
     try {
         const formData = new FormData();

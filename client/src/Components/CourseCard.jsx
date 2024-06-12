@@ -6,18 +6,18 @@ function CourseCard({ data }) {
   return (
     <div
       onClick={() => navigate("/course/description", {state: {...data}})}
-      className="card vs:w-[340px] lg:w-96 glass rounded-md shadow-lg   hover:scale-105 transition-all hover:bg-opacity-100  ease-in-out duration-300 cursor-pointer"
+      className="card vs:w-[340px] lg:w-96 glass rounded-md shadow-lg  hover:scale-105 transition-all hover:bg-opacity-100  ease-in-out duration-300 cursor-pointer"
     >
       <figure>
         <img
           src={data.thumbnail.secure_url}
-          className="w-[384px] h-[226px]"
+          className="w-[384px] h-[214px]"
           alt="car!"
         />
       </figure>
       <div className="card-body flex flex-col gap-3 h-[280px]  lg:h-[260px]">
         <h2 className="card-title line-clamp-2">{data.title}</h2>
-        <p className="line-clamp-2 text-sm sm:text-[15px] font-bold">
+        <p className="line-clamp-2 text-sm  sm:text-[15px] font-bold">
           {data.description}
         </p>
         <p className="text-sm sm:text-[15px] font-bold">

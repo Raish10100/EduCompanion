@@ -23,7 +23,6 @@ function CreateCourse() {
   const handleImgUpload = (e) => {
     e.preventDefault();
     const uploadedImg = e.target.files[0];
-    console.log(`uploaded img: ${uploadedImg}`);
     if (uploadedImg) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(uploadedImg);
@@ -65,7 +64,7 @@ function CreateCourse() {
      return
     }
 
-    if(userInput.description.length < 8 || userInput.description.length > 200) {
+    if(userInput.description.length < 8 || userInput.description.length > 900) {
      toast.error("Description must be between 8 and 200 characters")
      return
     }
@@ -85,11 +84,10 @@ function CreateCourse() {
       });
     }
 
-    console.log(response)
+    // console.log(response)
     toast.success("Course created successfully", { id: response?.payload?.loadingMessageId});
     setIsCreatingCourse(false);
-
-
+    
     navigate("/courses");
   };
 
