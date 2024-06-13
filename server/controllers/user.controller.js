@@ -13,6 +13,8 @@ const cookieOptions = {
 
 const register = async (req, res, next) => {
 try {
+    const reqBody = JSON.stringify(req.body)
+        console.log(reqBody)
     const { fullName, email, password } = req.body;
     if(!fullName || !email || !password) {
         return next(new AppError("All fields are required", 400));
@@ -278,53 +280,67 @@ const changePassword = async(req, res, next) => {
 }
 
 const updateUser = async(req, res, next) => {
-    const { fullName } = req.body;
-    const { id }  = req.user;
-
-    const user = await User.findById(id);
-
-    if(!user) {
-        return next(new AppError('User not found', 400));
+    try {
+        const reqBody = JSON.stringify(req.body)
+        console.log(reqBody)
+        const { fullName } = req.body;
+        const { id }  = req.user;
+    console.log(`fullname : ${fullName}`)
+    console.log(`id: ${id}`)
+        const user = await User.findById(id);
+    
+        if(!user) {
+            return next(new AppError('User not found', 400));
+        }
+    
+        // if user had given there name then only update it.
+        if(fullName || fullName != 'undefined') {
+            console.log(`username: ${fullName}`)
+            user.fullName = fullName;
+        };
+    
+        if(req.file) {
+            await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+    
+            try {
+                const result = await cloudinary.v2.uploader.upload(req.file.path, {
+                  folder: 'lms', // Save files in a folder named lms
+                  width: 250,
+                  height: 250,
+                  gravity: 'faces', // This option tells cloudinary to center the image around detected faces (if any) after cropping or resizing the original image
+                  crop: 'fill',
+                });
+          
+                // If success
+                if (result) {
+                  // Set the public_id and secure_url in DB
+                  user.avatar.public_id = result.public_id;
+                  user.avatar.secure_url = result.secure_url;
+                  // After successful upload remove the file from local storage
+                  fs.rm(`uploads/${req.file.filename}`);
+                }
+                console.log("from user controller / update controller / req.file")
+              } catch (error) {
+                return next(
+                  new AppError(error || 'File not uploaded, please try again', 400)
+                );
+              }
+        }
+    
+        await user.save();
+    
+        res.status(200).json({
+            success: true,
+            message: "User details updated successfully",
+            data: user
+        })
+    
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            error
+        })
     }
-
-    // if user had given there name then only update it.
-    if(fullName) {
-        user.fullName = fullName;
-    };
-
-    if(req.file) {
-        await cloudinary.v2.uploader.destroy(user.avatar.public_id);
-
-        try {
-            const result = await cloudinary.v2.uploader.upload(req.file.path, {
-              folder: 'lms', // Save files in a folder named lms
-              width: 250,
-              height: 250,
-              gravity: 'faces', // This option tells cloudinary to center the image around detected faces (if any) after cropping or resizing the original image
-              crop: 'fill',
-            });
-      
-            // If success
-            if (result) {
-              // Set the public_id and secure_url in DB
-              user.avatar.public_id = result.public_id;
-              user.avatar.secure_url = result.secure_url;
-              // After successful upload remove the file from local storage
-              fs.rm(`uploads/${req.file.filename}`);
-            }
-          } catch (error) {
-            return next(
-              new AppError(error || 'File not uploaded, please try again', 400)
-            );
-          }
-    }
-
-    await user.save();
-
-    res.status(200).json({
-        success: true,
-        message: "User details updated successfully",
-    })
 }
 
 export {

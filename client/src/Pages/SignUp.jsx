@@ -115,7 +115,8 @@ function SignUp() {
                 placeholder="Enter your name"
                 name="fullName"
                 id="fullName"
-                className="px-3 py-3 w-[100%] outline-none dark:hover:border-[#fff] border-black transition-all ease-in-out duration-300 tracking-widest text-black  dark:text-white dark:border-[#ffffff91] text-md sm:text-xl  border-2 rounded bg-transparent placeholder:text-black placeholder:dark:text-white"
+                // style={"text-transform": "capit" }
+                className="lowercase-input px-3 py-3 w-[100%] outline-none dark:hover:border-[#fff] border-black transition-all ease-in-out duration-300 tracking-widest text-black  dark:text-white dark:border-[#ffffff91] text-md sm:text-xl  border-2 rounded bg-transparent placeholder:text-black placeholder:dark:text-white placeholder:normal-case"
                 value={signupData.fullName}
                 onChange={handleUserInput}
               />

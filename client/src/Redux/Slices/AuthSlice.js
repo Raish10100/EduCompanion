@@ -22,6 +22,7 @@ export const createAccount = createAsyncThunk("/auth/register", async (data) => 
 })
 
 export const login = createAsyncThunk("/auth/login", async (data) => {
+  console.log(data)
   const loadingMessage = toast.loading("Please wait! authentication is in progress...");
   try {
       const res = await axiosInstance.post("/user/login", data);
@@ -41,6 +42,28 @@ export const logout = createAsyncThunk('/auth/logout', async () =>{
     return res?.data;
   } catch (error) {
     toast.error(error?.response?.data?.message, {id: loadingMessage})
+  }
+})
+
+export const updateProfile = createAsyncThunk('/user/update/profile', async (data) =>{ 
+  const loadingMessage = toast.loading('Please wait! update is in progress...')
+  try {
+    const res = await axiosInstance.post(`/user/update`, data);
+    console.log(data)
+    console.log(res)
+    toast.success(res?.data?.message, { id: loadingMessage });
+    return res?.data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message, {id: loadingMessage})
+  }
+})
+
+export const getUserData = createAsyncThunk('/user/details', async () =>{ 
+  try {
+    const res = await axiosInstance.get('/user/me');
+    return res?.data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message)
   }
 })
 
@@ -80,6 +103,15 @@ const authSlice = createSlice({
           state.isLoggedIn = false;
     });
 
+    // for Edit Profile
+    builder.addCase(getUserData.fulfilled, (state, action) => {
+      localStorage.setItem("data", JSON.stringify(action?.payload?.user));
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem("role", action?.payload?.user?.role);
+        state.isLoggedIn = true;
+        state.data = action?.payload?.user;
+        state.role = action?.payload?.user?.role;
+    })
     
   }
 })

@@ -33,3 +33,6 @@
         background-color: #000000b9;
 }
 
+.lowercase-input {
+        text-transform: lowercase;
+}
