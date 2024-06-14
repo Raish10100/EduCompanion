@@ -42,15 +42,14 @@ function Login(){
         const response = await dispatch(login(loginData));
         console.log(response)
         if(response?.payload?.success) {
+          setLoginData({
+              email: "",
+              password: "",
+          })
             navigate('/')
         }
 
 
-        // remove data from states
-        setLoginData({
-            email: "",
-            password: "",
-        })
 
     }
 
@@ -93,12 +92,20 @@ function Login(){
             <button  type="submit" className="signup-btn dark:bg-[#ffffffe5] bg-[#000000] rounded text-white active:bg-[#000000a2] dark:active:bg-[#ffffff7f] transition-all ease-in-out duration-300 border-none px-3 py-3 w-[100%] dark:text-black font-semibold text-md sm:text-xl">
               LogIn
             </button>
-            <p className="text-black dark:text-white sm:text-lg">
-                Want to create account ?{" "}
-                <Link to={'/signup'} className="link text-[#463cfa] dark:hover:text-[#346560] hover:text-[#2f2b72] dark:text-accent cursor-pointer transition-all duration-300 ease-in-out">
-                    Signup
-                </Link>
-            </p>
+            <div className="flex flex-col mt-3">
+              <p className="text-black dark:text-white sm:text-lg">
+                  Want to create account ?{" "}
+                  <Link to={'/signup'} className="link text-[#463cfa] dark:hover:text-[#346560] hover:text-[#2f2b72] dark:text-accent cursor-pointer transition-all duration-300 ease-in-out">
+                      Signup
+                  </Link>
+              </p>
+              <p className="text-black dark:text-white sm:text-lg">
+                  forget password ?{" "}
+                  <Link to={'/forgetpassword'} className="link text-[#463cfa] dark:hover:text-[#346560] hover:text-[#2f2b72] dark:text-accent cursor-pointer transition-all duration-300 ease-in-out">
+                      forget password
+                  </Link>
+              </p>
+            </div>
           </div>
         </form>
       </div>

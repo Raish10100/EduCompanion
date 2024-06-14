@@ -191,7 +191,7 @@ const forgotPassword = async (req, res, next) => {
 
         res.status(200).json({
             success: true,
-            message: `Reset password token has been sent to ${email} successfully`
+            message: `Password reset link sent to ${email} `
         });
 
     } catch (error) {

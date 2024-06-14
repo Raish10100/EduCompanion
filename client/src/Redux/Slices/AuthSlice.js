@@ -70,12 +70,27 @@ export const changePassword = createAsyncThunk("/user/change-password", async (u
 
     try {
       const res = await axiosInstance.post("/user/changePassword", userPasswords);
-    toast.success(res?.data?.message, { id: loadingMessage });
+      toast.success(res?.data?.message, { id: loadingMessage });
       return res?.data
     } catch (error) {
       toast.error(error?.response?.data?.message, { id: loadingMessage})
+      return
     }
 })
+
+export const forgetPassword = createAsyncThunk("/auth/forgetPassword", async (email) => {
+  const loadingMessage = toast.loading('Please wait! sending email...')
+
+    try {
+      const res = await axiosInstance.post('/user/forgotPassword', email);
+      toast.success(res?.data?.message, { id: loadingMessage });
+      return res?.data
+
+    } catch (error) {
+      toast.error(error?.response?.data?.message, { id: loadingMessage})
+      return
+    }
+} )
 
 const authSlice = createSlice({
   name: 'auth',

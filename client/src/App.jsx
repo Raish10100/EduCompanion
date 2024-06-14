@@ -15,6 +15,7 @@ import CreateCourse from "./Pages/Course/CreateCourse";
 import Profile from "./Pages/User/Profile";
 import EditProfile from "./Pages/User/EditProfile";
 import ChangePassword from "./Pages/Password/ChangePassword";
+import ForgetPassword from "./Pages/Password/ForgetPassword";
 
 function App() {
   return (
