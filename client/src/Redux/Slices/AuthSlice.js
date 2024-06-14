@@ -49,8 +49,6 @@ export const updateProfile = createAsyncThunk('/user/update/profile', async (dat
   const loadingMessage = toast.loading('Please wait! update is in progress...')
   try {
     const res = await axiosInstance.post(`/user/update`, data);
-    console.log(data)
-    console.log(res)
     toast.success(res?.data?.message, { id: loadingMessage });
     return res?.data;
   } catch (error) {
@@ -65,6 +63,18 @@ export const getUserData = createAsyncThunk('/user/details', async () =>{
   } catch (error) {
     toast.error(error?.response?.data?.message)
   }
+});
+
+export const changePassword = createAsyncThunk("/user/change-password", async (userPasswords) => {
+  const loadingMessage = toast.loading('Please wait! change is in progress...')
+
+    try {
+      const res = await axiosInstance.post("/user/changePassword", userPasswords);
+    toast.success(res?.data?.message, { id: loadingMessage });
+      return res?.data
+    } catch (error) {
+      toast.error(error?.response?.data?.message, { id: loadingMessage})
+    }
 })
 
 const authSlice = createSlice({

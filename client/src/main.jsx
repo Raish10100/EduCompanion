@@ -32,6 +32,7 @@ const toastOptions ={
     style: {
       background: 'red',
       color: 'white',
+      fontWeight: 'bold',
     },
   },
 }

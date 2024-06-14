@@ -14,6 +14,7 @@ import RequireAuth from "./Components/Auth/RequireAuth";
 import CreateCourse from "./Pages/Course/CreateCourse";
 import Profile from "./Pages/User/Profile";
 import EditProfile from "./Pages/User/EditProfile";
+import ChangePassword from "./Pages/Password/ChangePassword";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/forgetpassword" element={<ForgetPassword />} />
+
 
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
@@ -36,6 +39,7 @@ function App() {
         <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]} />}>
           <Route path="/user/profile" element={<Profile />} />
           <Route path="/user/editprofile" element={<EditProfile />}  />
+          <Route path="/user/changepassword" element={<ChangePassword />} />
         </Route>
 
         <Route path="/denied" element={<Denied />} />
