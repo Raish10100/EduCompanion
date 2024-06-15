@@ -69,7 +69,6 @@ export const cancelCourseBundle = createAsyncThunk("/payments/cancel", async () 
     }
 })
 
-
 const razorpaySlice = createSlice({
     name: "razorpay",
     initialState,
@@ -84,6 +83,10 @@ const razorpaySlice = createSlice({
         builder.addCase(verifyUserPayment.fulfilled, (state, action) => {
             state.isPaymentVerified = action?.payload?.success;
         });
+        builder.addCase(verifyUserPayment.rejected, (state, action) => {
+            toast.error(action?.payload?.message);
+            state.isPaymentVerified = false;
+          })
         builder.addCase(getPaymentRecord.fulfilled, (state, action) => {
             state.allPayments = action?.payload?.allPayments;
             state.finalMonths = action?.payload?.finalMonths;
@@ -91,5 +94,7 @@ const razorpaySlice = createSlice({
         })
     }
 })
+
+console.log(initialState)
 
 export default razorpaySlice.reducer;
