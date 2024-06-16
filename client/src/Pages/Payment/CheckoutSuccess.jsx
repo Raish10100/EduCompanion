@@ -9,9 +9,9 @@ function CheckoutSuccess() {
  
   return (
        <HomeLayout>
-             <div className="min-h-[90vh] flex items-center justify-center text-white">
-        {/* card to display message */}
-        <div className="w-80 h-[26rem] flex flex-col justify-center items-center shadow-[0_0_10px_black] rounded-lg relative">
+             <div className="min-h-[90vh] flex items-center justify-center text-white  dark:bg-transparent bg-[#e5e7eb]">
+
+        <div className="w-80 h-[26rem] flex flex-col justify-center items-center shadow-[0_0_10px_black] rounded-lg relative dark:bg-[#253e6a] bg-white">
           <h1 className="bg-green-500 absolute top-0 w-full text-center py-4 text-2xl font-bold rounded-tl-lg rounded-tr-lg">
             Payment Successful
           </h1>
@@ -27,11 +27,9 @@ function CheckoutSuccess() {
               </p>
             </div>
 
-            {/* adding the check symbol */}
             <AiFillCheckCircle className="text-5xl text-green-500" />
           </div>
 
-          {/* adding back to homepage button */}
           <Link
             className="bg-green-500 hover:bg-green-600 transition-all ease-in-out duration-300 absolute bottom-0 w-full text-center py-2 text-xl font-bold rounded-bl-lg rounded-br-lg"
             to={"/"}
