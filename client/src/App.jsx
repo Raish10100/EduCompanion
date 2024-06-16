@@ -18,6 +18,7 @@ import ChangePassword from "./Pages/Password/ChangePassword";
 import ForgetPassword from "./Pages/Password/ForgetPassword";
 import ResetPassword from "./Pages/Password/ResetPassword";
 import CheckoutPage from "./Pages/Payment/CheckoutPage";
+import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="/user/editprofile" element={<EditProfile />}  />
           <Route path="/user/changepassword" element={<ChangePassword />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/checkout/success" element={<CheckoutSuccess />} />
         </Route>
 
         <Route path="/denied" element={<Denied />} />

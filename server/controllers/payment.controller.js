@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import { razorpay } from "../server.js";
 import AppError from "../utils/error.util.js";
 import crypto from 'crypto'
+import Payment from '../models/payment.model.js'
 
 
 const getRazorpayApiKey = (req, res, next) => {
@@ -58,7 +59,7 @@ const buySubscription = async (req, res, next) => {
 const verifySubscription = async (req, res, next) => {
         const { id } = req.user;
         const { razorpay_payment_id, razorpay_signature, razorpay_subscription_id } = req.body;
-        console.log(razorpay_payment_id, razorpay_signature, razorpay_subscription_id )
+        console.log(` 1->${razorpay_payment_id}, 2 -> ${razorpay_signature}, 3-> ${razorpay_subscription_id} `)
         const user = await User.findById(id); 
         if(!user) {
             return next(

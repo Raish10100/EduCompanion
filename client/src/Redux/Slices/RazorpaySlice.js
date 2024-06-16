@@ -38,6 +38,7 @@ export const verifyUserPayment = createAsyncThunk("/payments/verify", async (dat
         razorpay_subscription_id: data.razorpay_subscription_id,
         razorpay_signature: data.razorpay_signature,
     });
+    console.log(data);
     toast.success("Payment verified", { id: loadingId })
     return response.data;
         
@@ -83,10 +84,6 @@ const razorpaySlice = createSlice({
         builder.addCase(verifyUserPayment.fulfilled, (state, action) => {
             state.isPaymentVerified = action?.payload?.success;
         });
-        builder.addCase(verifyUserPayment.rejected, (state, action) => {
-            toast.error(action?.payload?.message);
-            state.isPaymentVerified = false;
-          })
         builder.addCase(getPaymentRecord.fulfilled, (state, action) => {
             state.allPayments = action?.payload?.allPayments;
             state.finalMonths = action?.payload?.finalMonths;
