@@ -12,7 +12,7 @@ function CourseDescription() {
   useEffect(() => {}, []);
   return (
     <HomeLayout>
-      <section className=" md:pt-12 pt-2 px-4 lg:px-20 flex flex-col bg-[#e5e7eb] dark:bg-transparent text-black dark:text-white">
+      <section className=" md:pt-12 pt-2 px-4 lg:px-20 flex flex-col bg-[#e5e7eb] dark:bg-transparent justify-center lg:h-[90vh] text-black dark:text-white">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-10 pb-[100px] relative">
           <div className="lg:col-span-1 space-y-5">
             <img
@@ -41,11 +41,11 @@ function CourseDescription() {
           </div>
 
           <div className="lg:col-span-1 space-y-4 text-lg  flex flex-col justify-between ">
-            <h1 className="md:text-3xl text-2xl lg:text-4xl font-bold  text-[#2f71c1] mb-5 text-center w-fit  relative ">
+            <h1 className="md:text-3xl text-2xl lg:text-4xl font-bold  text-[#2f71c1] mb-5  w-fit  relative ">
               {state?.title}
             </h1>
 
-            <div className="space-y-5 flex flex-col flex-between">
+            <div className="sm:space-y-5 space-y-2 flex flex-col flex-between">
               <h2 className="text-2xl text-gray-800 dark:text-white font-[600] font-inter">
                 Course description:
               </h2>

@@ -51,9 +51,12 @@ function CheckoutPage() {
             const res = await dispatch(verifyUserPayment(paymentDetails));
             // console.log(` 1->${razorpay_payment_id}, 2 -> ${razorpay_signature}, 3-> ${razorpay_subscription_id} `)
     
+
             !isPaymentVerified
               ? navigate("/checkout/success")
               : navigate("/checkout/fail");
+
+
           },
         };
         const paymentObject = new window.Razorpay(options);

@@ -1,15 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
 import HomeLayout from "../../Layouts/HomeLayout";
 import { FaUserCircle } from "react-icons/fa";
-import {Link}  from "react-router-dom";
+import {Link, useNavigate}  from "react-router-dom";
+import { cancelCourseBundle } from "../../Redux/Slices/RazorpaySlice";
+import { getUserData } from "../../Redux/Slices/AuthSlice";
+import toast from "react-hot-toast";
 
  
 function Profile() {
-  
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const userData = useSelector(state => state?.auth?.data);
 
+    async function handleCancellation() {
+      // toast("Initiating cancellation")
+      await dispatch(cancelCourseBundle());
+      await dispatch(getUserData());
+      // toast.success("Cancellation completed!")
+      navigate("/");
+    }
 
   return (
        <HomeLayout>
@@ -64,7 +74,7 @@ function Profile() {
                     value={userData?.role}
                   />
                 </div>
-              <div className="flex justify-between w-[100%] gap-2">
+              <div className="flex justify-between w-[100%] gap-2 mt-[10px]">
                   <button  type="submit" className="signup-btn dark:bg-[#ffffffe5] bg-[#000000] rounded text-white active:bg-[#000000a2] dark:active:bg-[#ffffff7f] transition-all ease-in-out duration-300 border-none px-3 py-1 w-[50%] dark:text-black font-semibold text-md sm:text-xl">
                     <Link to={"/user/changepassword"}>Change Password</Link>
                   </button>
@@ -75,7 +85,7 @@ function Profile() {
                 {
                   userData?.subscription?.status === "active"
                     &&
-                  <button  type="submit" className="signup-btn bg-[#f74c4ce5] bg-[#000000] rounded text-white  active:bg-[#e3666688] transition-all ease-in-out duration-300 border-none px-3 py-1 w-[100%] dark:text-white font-semibold text-md sm:text-xl">
+                  <button  type="submit" onClick={handleCancellation}  className="signup-btn mt-[-10px] bg-[#f74c4ce5] hover:bg-[#e36666f3] bg-[#000000] rounded text-white  active:bg-[#e3666688] transition-all ease-in-out duration-300 border-none px-3 py-1 w-[100%] dark:text-white font-semibold text-md sm:text-xl">
                   Cancel Subscription
                   </button>
                   

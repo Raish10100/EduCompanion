@@ -1,10 +1,19 @@
 import { RxCrossCircled } from "react-icons/rx";
 import HomeLayout from "../../Layouts/HomeLayout";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getUserData } from "../../Redux/Slices/AuthSlice";
+import { useEffect } from "react";
 
  
 function CheckoutFail() {
   
+   
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserData());
+  }, [])
  
  
   return (

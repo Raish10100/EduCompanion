@@ -145,7 +145,7 @@ const authSlice = createSlice({
           state.isLoggedIn = false;
     });
 
-    // for Edit Profile
+    // for get user data
     builder.addCase(getUserData.fulfilled, (state, action) => {
       localStorage.setItem("data", JSON.stringify(action?.payload?.user));
         localStorage.setItem('isLoggedIn', true);
