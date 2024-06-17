@@ -19,7 +19,7 @@ function DisplayLectures() {
 
   useEffect(() => {
     if (!state) navigate("/courses");
-    // dispatch(getCourseLectures(state._id));
+    dispatch(getCourseLectures(state._id));
   }, []);
 
   return (

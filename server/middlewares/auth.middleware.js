@@ -1,3 +1,4 @@
+import User from "../models/user.model.js";
 import AppError from "../utils/error.util.js";
 import jwt from 'jsonwebtoken'
 
@@ -29,8 +30,11 @@ const authorizedRoles = (...roles) => {   // argument converted into array
 }
 
 const authorizeSubscriber = async (req, res, next) => {
-    const subscription = req.user.subscription;
-    const currentUserRole = req.user.role;
+    const user = await User.findById(req.user.id);
+    // console.log(user)
+
+    const subscription = user.subscription;
+    const currentUserRole = user.role;
 
     console.log(`subscription: ${subscription.status} , currentUserRole ====> ${currentUserRole}`)
     
