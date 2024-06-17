@@ -20,6 +20,7 @@ import ResetPassword from "./Pages/Password/ResetPassword";
 import CheckoutPage from "./Pages/Payment/CheckoutPage";
 import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 import CheckoutFail from "./Pages/Payment/CheckoutFail";
+import DisplayLectures from "./Pages/Dashboard/DisplayLectures";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/checkout/success" element={<CheckoutSuccess />} />
           <Route path="/checkout/fail" element={<CheckoutFail />} />
+          <Route path="/course/displaylectures" element={<DisplayLectures />} />
         </Route>
 
         <Route path="/denied" element={<Denied />} />

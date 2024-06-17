@@ -32,11 +32,14 @@ const authorizeSubscriber = async (req, res, next) => {
     const subscription = req.user.subscription;
     const currentUserRole = req.user.role;
 
+    console.log(`subscription: ${subscription.status} , currentUserRole ====> ${currentUserRole}`)
+    
     if(currentUserRole !== 'ADMIN' && subscription.status !== 'active') {
         return next(
             new AppError('Please subscribe to access this resource', 403)
-        )
+            )
     }
+        console.log('Authorized')
     next();
 }
 

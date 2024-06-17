@@ -90,7 +90,7 @@ function CreateCourse() {
     console.log(response)
     setIsCreatingCourse(false);
     
-    // navigate("/courses");
+    navigate("/courses");
   };
 
   return (

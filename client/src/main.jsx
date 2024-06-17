@@ -20,7 +20,7 @@ const toastOptions ={
     color: '#fff',
     borderRadius: '8px',
     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-   'text-align': "center"
+    textAlign: "center"
   },
   // Specific styles 
   success: {

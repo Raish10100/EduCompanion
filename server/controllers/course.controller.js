@@ -23,7 +23,7 @@ const getAllCourses = async (req, res, next) => {
 const getLecturesByCourseId = async (req, res, next) => {
     try {
         const { id } = req.params;
-
+console.log(`id: ${id}`)
         const course = await Course.findById(id);
 
         res.status(200).json({
