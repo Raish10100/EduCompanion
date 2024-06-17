@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUserData } from "../../Redux/Slices/AuthSlice";
+import { getCourseLectures } from "../../Redux/Slices/LectureSlice";
 
  
 function CheckoutSuccess() {
@@ -12,6 +13,7 @@ function CheckoutSuccess() {
 
   useEffect(() => {
     dispatch(getUserData());
+    // dispatch(getCourseLectures())
   }, [])
  
  

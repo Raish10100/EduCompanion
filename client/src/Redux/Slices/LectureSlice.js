@@ -11,7 +11,14 @@ export const getCourseLectures = createAsyncThunk("/course/lecture/get", async (
     const loadingMessageId = toast.loading(`Loading lectures...`);
     try {
         const response = await axiosInstance.get(`/courses/${cid}`);
-        toast.success("Successfully loaded lectures", { id: loadingMessageId });
+        const lectureNotFound = response?.data?.lectures.length > 0
+        console.log(response)
+        if(!lectureNotFound){
+            toast.error("Lectures not found", { id: loadingMessageId });
+        }
+        else{
+            toast.success("Successfully loaded lectures", { id: loadingMessageId });
+        }
         return response?.data;
     } catch (error) {
         toast.error("Failed to get lectures", { id: loadingMessageId})
@@ -47,7 +54,7 @@ const lectureSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getCourseLectures.fulfilled, (state, action) => {
-            console.log(action?.payload)
+            // console.log(action?.payload)
             state.lectures = action?.payload?.lectures;
         });
         builder.addCase(addCourseLecture.fulfilled, (state, action) => {

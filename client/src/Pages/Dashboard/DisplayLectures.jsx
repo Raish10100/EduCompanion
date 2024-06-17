@@ -10,13 +10,16 @@ function DisplayLectures() {
 
   const { state } = useLocation();
   const { lectures } = useSelector((state) => state?.lecture);
+  console.log(lectures)
   const { role } = useSelector((state) => state?.auth);
 
   const [currentVideo, setCurrentVideo] = useState(0);
 
+  const vidSrc = lectures.length > 0  ? lectures?.[currentVideo]?.lecture?.secure_url : ""
+
   useEffect(() => {
     if (!state) navigate("/courses");
-    dispatch(getCourseLectures(state._id));
+    // dispatch(getCourseLectures(state._id));
   }, []);
 
   return (
@@ -35,9 +38,10 @@ function DisplayLectures() {
             <div className="md:w-[48%] w-full md:p-3 p-1 overflow-y-scroll md:h-full h-[70%] flex justify-center shadow-xl ">
               <div className="w-full h-[270px] ">
                 <video
-                  src={
-                    lectures && lectures?.[currentVideo]?.lecture?.secure_url
-                  }
+                  src={vidSrc}
+                  // src={
+                  //   lectures && lectures[currentVideo].lecture.secure_url
+                  // }
                   disablePictureInPicture
                   disableRemotePlayback 
                   controls

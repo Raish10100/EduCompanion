@@ -57,44 +57,45 @@ const buySubscription = async (req, res, next) => {
 }
 
 const verifySubscription = async (req, res, next) => {
-        const { id } = req.user;
-        const { razorpay_payment_id, razorpay_signature, razorpay_subscription_id } = req.body;
-        console.log(` 1->${razorpay_payment_id}, 2 -> ${razorpay_signature}, 3-> ${razorpay_subscription_id} `)
-        const user = await User.findById(id); 
-        if(!user) {
-            return next(
-                new AppError('User not found', 404)
-            )
-        };
-    
-        const subscriptionId = user.subscription.id;
-    
-        const generatedSignature = crypto
-                                        .createHmac('sha256', process.env.RAZORPAY_SECRET)
-                                        .update(`${razorpay_payment_id}|${subscriptionId}`)
-                                        .digest('hex')
-    
-        if(generatedSignature !== razorpay_signature) {
-            return next(
-                new AppError('Payment not verified, please try again', 500)
-            )
-        }
-    
-        await Payment.create({
-            razorpay_payment_id,
-            razorpay_signature,
-            razorpay_subscription_id 
-        })
-    
-        user.subscription.status = 'active';
-        await user.save();
-    
-        res.status(200).json({
-            success: true,
-            message: 'Payment verified successfully'
-        })
-    
-  
+    const { id } = req.user;
+    const { razorpay_payment_id, razorpay_signature, razorpay_subscription_id } = req.body;
+    console.log(` 1->${razorpay_payment_id}, 2 -> ${razorpay_signature}, 3-> ${razorpay_subscription_id} `)
+    const user = await User.findById(id); 
+    if(!user) {
+        return next(
+            new AppError('User not found', 404)
+        )
+    };
+
+    const subscriptionId = user.subscription.id;
+
+    const generatedSignature = crypto
+                                    .createHmac('sha256', process.env.RAZORPAY_SECRET)
+                                    .update(`${razorpay_payment_id}|${subscriptionId}`)
+                                    .digest('hex')
+
+    if(generatedSignature !== razorpay_signature) {
+        return next(
+            new AppError('Payment not verified, please try again', 500)
+        )
+    }
+
+    await Payment.create({
+        razorpay_payment_id,
+        razorpay_signature,
+        razorpay_subscription_id 
+    })
+
+    user.subscription.status = 'active';
+    await user.save();
+    console.log(user.subscription.status)
+
+    res.status(200).json({
+        success: true,
+        message: 'Payment verified successfully'
+    })
+
+
 }
 
 const cancelSubscription = async (req, res, next) => {

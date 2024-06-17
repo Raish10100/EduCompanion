@@ -33,12 +33,12 @@ export const purchaseCourseBundle = createAsyncThunk("/purchaseCourse", async ()
 export const verifyUserPayment = createAsyncThunk("/payments/verify", async (data) => {
     const loadingId = toast.loading("Subscribing bundle...");
     try {
+        // console.log(data);
     const response = await axiosInstance.post("/payments/verify", {
         razorpay_payment_id: data.razorpay_payment_id,
         razorpay_subscription_id: data.razorpay_subscription_id,
         razorpay_signature: data.razorpay_signature,
     });
-    console.log(data);
     toast.success("Payment verified", { id: loadingId })
     return response.data;
         

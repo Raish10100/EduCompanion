@@ -8,24 +8,25 @@ import { BiRupee } from "react-icons/bi";
  
 function CheckoutPage() {
   
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const razorpayKey = useSelector(state => state.razorpay.key);
-    const subscription_id = useSelector(state => state.razorpay.subscription_id);
-    const isPaymentVerified =  useSelector(state => state.razorpay.isPaymentVerified);
-    const userData = useSelector(state => state?.auth?.data);
-    const paymentDetails = {
-        razorpay_payment_id: "",
-        razorpay_subscription_id: "",
-        razorpay_signature: "",
-      };
-    
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const razorpayKey = useSelector(state => state.razorpay.key);
+  const subscription_id = useSelector(state => state.razorpay.subscription_id);
+  const isPaymentVerified =  useSelector(state => state.razorpay.isPaymentVerified);
+  const userData = useSelector(state => state?.auth?.data);
+  const paymentDetails = {
+    razorpay_payment_id: "",
+    razorpay_subscription_id: "",
+    razorpay_signature: "",
+  };
+  
+
 
       const handleSubscription = async (event) => {
         event.preventDefault();
     
         if (!razorpayKey || !subscription_id) {
-            toast.error("something went wrong")
+            toast.error("Try again")
           return;
         }
     
@@ -46,16 +47,16 @@ function CheckoutPage() {
             paymentDetails.razorpay_subscription_id = response.razorpay_subscription_id;
             paymentDetails.razorpay_signature = response.razorpay_signature;
     
-            toast.success("Payment Successfull");
-    
+            
             const res = await dispatch(verifyUserPayment(paymentDetails));
             // console.log(` 1->${razorpay_payment_id}, 2 -> ${razorpay_signature}, 3-> ${razorpay_subscription_id} `)
-    
-
-            !isPaymentVerified
-              ? navigate("/checkout/success")
-              : navigate("/checkout/fail");
-
+            console.log(isPaymentVerified)
+            
+            !isPaymentVerified && isPaymentVerified != undefined
+            ? navigate("/checkout/success")
+            : navigate("/checkout/fail");
+            
+            // toast.success("Payment Successfull");
 
           },
         };
