@@ -21,6 +21,7 @@ import CheckoutPage from "./Pages/Payment/CheckoutPage";
 import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 import CheckoutFail from "./Pages/Payment/CheckoutFail";
 import DisplayLectures from "./Pages/Dashboard/DisplayLectures";
+import TermsAndConditions from "./Pages/Legal/TermsAndConditions";
 
 function App() {
   return (
@@ -52,6 +53,10 @@ function App() {
           <Route path="/checkout/fail" element={<CheckoutFail />} />
           <Route path="/course/displaylectures" element={<DisplayLectures />} />
         </Route>
+
+
+        <Route path="/legal/termsandconditions" element={<TermsAndConditions />} />
+
 
         <Route path="/denied" element={<Denied />} />
         <Route path="/*" element={<NotFound />} />

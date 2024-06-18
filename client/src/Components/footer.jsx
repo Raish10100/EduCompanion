@@ -26,7 +26,7 @@ function Footer() {
                 <ul className='flex flex-col sm:items-start gap-3 items-center mt-3'>
                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Refund & Cancellation Policy</Link></li>
                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Privacy Policy</Link></li>
-                   <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>Terms of use</Link></li>
+                   <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/legal/termsandconditions"}>Terms and conditions</Link></li>
                 </ul>
             </section>
             <section className='flex flex-col gap-6 justify-center items-center sm:items-start'>
