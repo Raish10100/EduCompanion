@@ -24,6 +24,7 @@ import DisplayLectures from "./Pages/Dashboard/DisplayLectures";
 import TermsAndConditions from "./Pages/Legal/TermsAndConditions";
 import ScrollToTop from "./Helpers/ScrollToTop";
 import PrivacyPolicy from "./Pages/Legal/PrivacyPolicy";
+import RefundCancellationPolicy from "./Pages/Legal/RefundCancellationPolicy";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
 
         <Route path="/legal/termsandconditions" element={<TermsAndConditions />}/>
         <Route path="/legal/privacyandpolicy" element={<PrivacyPolicy />}/>
+        <Route path="/legal/refundcancellationpolicy" element={<RefundCancellationPolicy/>} />
 
         <Route path="/denied" element={<Denied />} />
         <Route path="/*" element={<NotFound />} />
