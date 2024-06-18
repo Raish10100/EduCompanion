@@ -67,8 +67,8 @@ function DisplayLectures() {
             </div>
 
             {/* right section for lectures list */}
-            <div className="md:w-[44%]  md:flex-row flex-col  max-h-[300px] w-full md:h-full overflow-y-scroll shadow-xl">
-              <ul className="w-full md:p-2 pb-6  flex flex-col gap-5 shadow-sm md:dark:bg-transparent md:bg-transparent dark:bg-[#ffffff2c] bg-[#77787a31]">
+            <div className="md:w-[44%]  md:flex-row flex-col h-[100%]  w-full md:h-full overflow-y-scroll shadow-xl">
+              <ul className="w-full md:px-2 md:pt-0 flex flex-col h-full overflow-y-scroll pb-[120px] gap-5 shadow-sm md:dark:bg-transparent md:bg-transparent dark:bg-[#ffffff2c] bg-[#77787a31]">
                 <li className="font-semibold bg-[#77787a]  dark:bg-[#023666]  p-3 rounded-sm shadow-lg sticky top-0 text-xl text-[#fff] font-nunito-sans flex items-center justify-between">
                   <p>Lectures list</p>
                   {role === "ADMIN" && (

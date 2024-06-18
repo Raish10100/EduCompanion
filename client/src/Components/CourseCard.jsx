@@ -25,7 +25,9 @@ function CourseCard({ data }) {
         </p>
         <p className="text-sm sm:text-[15px] font-bold">
           Total lectures:{" "}
-          <span className="font-normal">{data.numberOfLectures}</span>
+          <span className="font-normal">{data.numbersOfLectures}</span>
+          {/* <span className="font-normal">54</span> */}
+          {console.log(data.numberOfLectures)}
         </p>
         <p className="text-sm sm:text-[15px] font-bold">
           Instructor: <span className="font-normal">{data.createdBy}</span>
