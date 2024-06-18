@@ -22,17 +22,18 @@ import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 import CheckoutFail from "./Pages/Payment/CheckoutFail";
 import DisplayLectures from "./Pages/Dashboard/DisplayLectures";
 import TermsAndConditions from "./Pages/Legal/TermsAndConditions";
+import ScrollToTop from "./Helpers/ScrollToTop";
 
 function App() {
   return (
     <div className="app">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/resetpassword/:resetToken" element={<ResetPassword />} />
-
 
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
@@ -46,7 +47,7 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]} />}>
           <Route path="/user/profile" element={<Profile />} />
-          <Route path="/user/editprofile" element={<EditProfile />}  />
+          <Route path="/user/editprofile" element={<EditProfile />} />
           <Route path="/user/changepassword" element={<ChangePassword />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/checkout/success" element={<CheckoutSuccess />} />
@@ -54,9 +55,10 @@ function App() {
           <Route path="/course/displaylectures" element={<DisplayLectures />} />
         </Route>
 
-
-        <Route path="/legal/termsandconditions" element={<TermsAndConditions />} />
-
+        <Route
+          path="/legal/termsandconditions"
+          element={<TermsAndConditions />}
+        />
 
         <Route path="/denied" element={<Denied />} />
         <Route path="/*" element={<NotFound />} />

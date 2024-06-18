@@ -17,3 +17,7 @@
   font-family: 'Poppins', 'serif';
   font-weight: 900;
 }
+
+html {
+  scroll-behavior: smooth;
+}
