@@ -23,6 +23,7 @@ import CheckoutFail from "./Pages/Payment/CheckoutFail";
 import DisplayLectures from "./Pages/Dashboard/DisplayLectures";
 import TermsAndConditions from "./Pages/Legal/TermsAndConditions";
 import ScrollToTop from "./Helpers/ScrollToTop";
+import PrivacyPolicy from "./Pages/Legal/PrivacyPolicy";
 
 function App() {
   return (
@@ -55,10 +56,8 @@ function App() {
           <Route path="/course/displaylectures" element={<DisplayLectures />} />
         </Route>
 
-        <Route
-          path="/legal/termsandconditions"
-          element={<TermsAndConditions />}
-        />
+        <Route path="/legal/termsandconditions" element={<TermsAndConditions />}/>
+        <Route path="/legal/privacyandpolicy" element={<PrivacyPolicy />}/>
 
         <Route path="/denied" element={<Denied />} />
         <Route path="/*" element={<NotFound />} />
