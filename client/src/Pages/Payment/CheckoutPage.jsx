@@ -26,7 +26,7 @@ function CheckoutPage() {
         event.preventDefault();
     
         if (!razorpayKey || !subscription_id) {
-            toast.error("Try again")
+          toast.error("Try again after 2 seconds")
           return;
         }
     

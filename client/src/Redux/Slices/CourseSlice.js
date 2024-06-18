@@ -9,14 +9,14 @@ const initialState = {
 
 export const getAllCourses = createAsyncThunk("/course/get", async () => {
 
-        // const loadingMessage = toast.loading("Please wait! fetching courses data...");
+        const loadingMessage = toast.loading("Please wait! fetching courses data...");
     try{
         const response = await axiosInstance.get("/courses");
-        // toast.success(response?.data?.message, { id: loadingMessage })
+        toast.success(response?.data?.message, { id: loadingMessage })
         return response?.data?.courses;
     }
     catch (error) {
-        // toast.error(error?.response?.data?.message, { id: loadingMessage });
+        toast.error(error?.response?.data?.message, { id: loadingMessage });
         throw error
     }
 });
