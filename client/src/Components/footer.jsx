@@ -15,23 +15,24 @@ function Footer() {
             <section className='flex flex-col gap-3 justify-center items-center sm:items-start'>
                 <h2 className='font-bold text-2xl'>Quick Links</h2>
                 <ul className='flex flex-col sm:items-start items-center gap-3 mt-3'>
-                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/"}>Home</Link></li>
-                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/courses"}>Courses</Link></li>
-                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/about"}>About Us</Link></li>
-                    <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/contact"}>Contact</Link></li>
+                    <li><Link className='hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out' to={"/"}>Home</Link></li>
+                    <li><Link className='hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out' to={"/courses"}>Courses</Link></li>
+                    <li><Link className='hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out' to={"/about"}>About Us</Link></li>
+                    <li><Link className='hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out' to={"/contact"}>Contact</Link></li>
                 </ul>
             </section>
             <section className='flex flex-col gap-3 justify-center items-center sm:items-start'>
                 <h2 className='font-bold text-2xl'>Legal</h2>
                 <ul className='flex flex-col sm:items-start gap-3 items-center mt-3'>
-                   <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/legal/refundcancellationpolicy"}>Refund & Cancellation Policy</Link></li>
-                   <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/legal/privacyandpolicy"}>Privacy Policy</Link></li>
-                   <li><Link className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300' to={"/legal/termsandconditions"}>Terms and conditions</Link></li>
+                   <li><Link className='hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out' to={"/legal/refund-cancellation-policy"}>Refund & Cancellation Policy</Link></li>
+                   <li><Link className='hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out' to={"/legal/privacy-and-policy"}>Privacy Policy</Link></li>
+                   <li><Link className='hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out' to={"/legal/terms-and-conditions"}>Terms and conditions</Link></li>
+                   <li><Link className="hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out" to={"/legal/shipping-policy"}>Shipping Policy</Link></li>
                 </ul>
             </section>
             <section className='flex flex-col gap-6 justify-center items-center sm:items-start'>
                 <h2 className='font-bold text-2xl '>GET IN TOUCH</h2>
-                <p ><a href="mailto:educompanion.it@gmail.com" target='_blank' className='hover:text-[#3c8ff4] hover:underline transition-all duration-300 ease-in-out '>educompanion.it@gmail.com</a></p>
+                <p ><a href="mailto:educompanion.it@gmail.com" target='_blank' className='hover:text-[#3c8ff4] underline text-blue-600 hover:underline transition-all duration-300 ease-in-out'>educompanion.it@gmail.com</a></p>
                 <section className='socials flex justify-center items-center flex-wrap pb-3 gap-2 text-2xl text-white'>
                     <a href="https://github.com/Raish10100/EduCompanion" target='_blank' className='hover:text-[#3c8ff4] transition-all ease-in-out duration-300'>
                         <FaGithub  />
@@ -54,7 +55,7 @@ function Footer() {
             </section>
             <section className='copyright text-lg text-[#000] dark:text-white text-center mt-16'>
                 ©  {new Date().getFullYear()}
-                <a className='font-extrabold hover:text-[#3c8ff4] transition-all ease-in-out' href='https://www.linkedin.com/in/raish-vadaviya-439213289/' target='_blank'> Raish Vadaviya</a>.
+                <a className='hover:text-[#3c8ff4] underline font-bold text-blue-600 hover:underline transition-all duration-300 ease-in-out' href='https://www.linkedin.com/in/raish-vadaviya-439213289/' target='_blank'> Raish Vadaviya</a>.
                 All rights reserved
             </section>
     </footer>
