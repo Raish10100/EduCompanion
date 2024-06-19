@@ -7,7 +7,6 @@ import {
   addCourseLecture,
   getCourseLectures,
 } from "../../Redux/Slices/LectureSlice";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 
 function AddLecture() {
   const courseDetails = useLocation();
@@ -24,7 +23,7 @@ function AddLecture() {
     description: "",
     videoSrc: "",
   });
-  console.log(userInput.courseId);
+  // console.log(userInput.courseId);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +36,7 @@ function AddLecture() {
   const handleVideo = (e) => {
     const video = e.target.files[0];
     const source = window.URL.createObjectURL(video);
-    console.log(`Video URL --->${source}`);
+    // console.log(`Video URL --->${source}`);
     setUserInput({
       ...userInput,
       lecture: video,

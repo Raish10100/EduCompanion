@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import HomeLayout from "../../Layouts/HomeLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getCourseLectures } from "../../Redux/Slices/LectureSlice";
+import { deleteCourseLecture, getCourseLectures } from "../../Redux/Slices/LectureSlice";
 
 function DisplayLectures() {
   const navigate = useNavigate();
@@ -10,12 +10,20 @@ function DisplayLectures() {
 
   const { state } = useLocation();
   const { lectures } = useSelector((state) => state?.lecture);
-  console.log(lectures)
+  // console.log(lectures)
   const { role } = useSelector((state) => state?.auth);
 
   const [currentVideo, setCurrentVideo] = useState(0);
 
   const vidSrc = lectures.length > 0  ? lectures?.[currentVideo]?.lecture?.secure_url : ""
+
+  async function onLectureDelete(courseId, lectureId) {
+    await dispatch(
+      deleteCourseLecture({ courseId: courseId, lectureId: lectureId })
+    );
+    await dispatch(getCourseLectures(courseId));
+  }
+
 
   useEffect(() => {
     // dispatch(getCourseLectures(state._id));
