@@ -103,7 +103,7 @@ function SignUp() {
         <form
           onSubmit={createNewAccount}
           noValidate
-          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[80%] sm:w-[50%] lg:w-[35%]  flex-col flex justify-center items-center py-3 gap-6 rounded "
+          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%]  flex-col flex justify-center items-center py-3 gap-6 rounded "
         >
           <h1 className="text-xl vs:text-3xl text-black dark:text-white font-bold">Create Account</h1>
           <div className="fields w-[90%] flex flex-col justify-center items-center gap-4">
@@ -149,11 +149,12 @@ function SignUp() {
             </div>
             <div className="w-[100%] flex flex-col gap-1">
               <label htmlFor="Avatar" className="text-start w-[100%] text-xl font-bold dark:text-white text-black">Avatar</label>
-              <div className=" vs:w-[100%] w-[100%]  text-wrap custom-group-avatar">
+              <div className=" vs:w-[100%] w-[100%]  text-wrap custom-group-avatar relative">
                 <input
                 onChange={getImage}
                   type="file"
-                  className=" absolute  opacity-0 bg-black  overflow-x-hidden max-w-[100px] h-[40px] vs:max-w-[1000px] mt-4 vs:mt-3 ml-2 vs:px-8 sm:px-24 cursor-pointer"
+                  // className=" absolute opacity-0   bg-black  h-[80%] vs:mt-3 ml-2 overflow-x-hidden max-w-[200px] h-[40px] vs:max-w-[500px] mt-4  vs:px-8 sm:px-24 cursor-pointer"
+                  className=" absolute opacity-0  bg-black  h-[80%] w-[95%] mt-2 ml-2 vs:px-8 sm:px-24 cursor-pointer"
                   id="image_uploads"
                   accept=".jpg, .jpeg, .png"
                 />

@@ -59,7 +59,7 @@ function Login(){
         <form
           onSubmit={onLogin}
           noValidate
-          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[80%] sm:w-[50%] lg:w-[35%]  flex-col flex justify-center items-center py-3 gap-6 rounded"
+          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%]  flex-col flex justify-center items-center py-3 gap-6 rounded"
         >
           <h1 className="text-xl vs:text-3xl text-black dark:text-white font-bold">LogIn</h1>
           <div className="fields w-[90%] flex flex-col justify-center items-center gap-3">
@@ -68,7 +68,7 @@ function Login(){
               <input
                 required
                 type="email"
-                placeholder="Email Address"
+                placeholder="Enter your email"
                 name="email"
                 id="email"
                 className="px-3 py-3 w-[100%] outline-none dark:hover:border-[#fff] border-black transition-all ease-in-out duration-300 tracking-widest text-black  dark:text-white dark:border-[#ffffff91] text-md sm:text-xl  border-2 rounded bg-transparent placeholder:text-black placeholder:dark:text-white"
@@ -81,7 +81,7 @@ function Login(){
               <input
                 required
                 type="password"
-                placeholder="Password"
+                placeholder="Enter your password"
                 name="password"
                 id='password'
                 className="px-3 py-3 w-[100%] outline-none dark:hover:border-[#fff] border-black transition-all ease-in-out duration-300 tracking-widest text-black  dark:text-white dark:border-[#ffffff91] text-md sm:text-xl  border-2 rounded bg-transparent placeholder:text-black placeholder:dark:text-white"

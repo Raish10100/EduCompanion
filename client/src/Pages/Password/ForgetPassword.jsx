@@ -37,7 +37,7 @@ function ForgetPassword() {
         <form
           onSubmit={handleFormSubmit}
           noValidate
-          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[80%] sm:w-[50%] lg:w-[30%] vs:px-5  flex-col flex justify-center items-center  py-5 gap-4 rounded "
+          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%]  vs:px-5  flex-col flex justify-center items-center  py-5 gap-4 rounded "
         >
           <h1 className="text-xl vs:text-3xl text-black dark:text-white font-bold ">
             Forget Password

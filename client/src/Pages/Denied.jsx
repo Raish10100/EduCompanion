@@ -2,7 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Denied() {
 
-    const Navigate = useNavigate()
+    const navigate = useNavigate()
+
+    const handleGoBack = () => {
+        navigate(-2)
+    }
 
     return (
         <div className="notfound flex items-center justify-center flex-col h-[100vh] bg-[#12213b] ">
@@ -13,10 +17,10 @@ function Denied() {
                 Access<span className="font-[700] ">!</span> denied
             </h4>
             <p className="text-white mt-8 lg:mt-12 sm:text-xl font-semibold lg:text-2xl w-[90%] sm:w-[40%] text-center">
-                We apologize, but you are not authorized to view this content.
+                We apologize, but you are not authorized to access the page.
             </p>
             <div className="flex flex-row justify-center flex-wrap   w-[100%]  gap-2  mt-8 ">
-                <button ><Link className=" bg-[#ef3d5a]  rounded-3xl hover:bg-[#f35b5ba8] transition-all ease-in-out duration-300 text-gray-300  px-6 py-2 lg:text-xl" onClick={() => Navigate(-1)}>Go Back</Link></button>
+                <Link className=" bg-[#ef3d5a]  rounded-3xl hover:bg-[#f35b5ba8] transition-all ease-in-out duration-300 text-gray-300  px-6 py-2 lg:text-xl" onClick={()=>  handleGoBack()}>Go Back</Link>
             </div>
         </div>
     )

@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="dark:bg-[#12213b] border-t-2 bg-gray-200 border-gray-500 py-7 z-0 ">
-      <section className="relative left-0 bottom-0 py-5 flex flex-col sm:flex-row sm:gap-6 gap-12 flex-wrap items-start justify-between text-[#000000] dark:text-white sm:px-20">
+      <section className="relative left-0 bottom-0 py-5 flex flex-col sm:flex-row sm:gap-6 gap-12 flex-wrap  items-center sm:justify-between sm:items-start  text-[#000000] dark:text-white sm:px-20">
         <section className="flex flex-col gap-6 justify-center sm:items-start items-center">
           <p className="Logo font-semibold text-3xl">EduCompanion</p>
           <p className="text-center sm:text-start">
             Empower Your Learning Journey with Our <br /> Comprehensive Courses
           </p>
         </section>
-        <section className="flex flex-col gap-3 justify-center items-center sm:items-start">
+        <section className="flex flex-col gap-3 justify-center items-center sm:items-start sm:w-[240px] w-full">
           <h2 className="font-bold text-2xl">Quick Links</h2>
           <ul className="flex flex-col sm:items-start items-center gap-3 mt-3">
             <li>
@@ -116,7 +116,7 @@ function Footer() {
               EduCompanion, Wankaner, Morbi, <br /> Gujarat, 363621, India
             </a>
           </p>
-          <section className="socials flex justify-center items-center flex-wrap  gap-2 text-2xl text-white">
+          <section className="socials flex justify-center items-center flex-wrap mt-[4px] gap-2 text-2xl text-white">
             <a
               href="https://github.com/Raish10100/EduCompanion"
               target="_blank"
