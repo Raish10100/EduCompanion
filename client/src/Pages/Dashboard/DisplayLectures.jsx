@@ -18,8 +18,17 @@ function DisplayLectures() {
   const vidSrc = lectures.length > 0  ? lectures?.[currentVideo]?.lecture?.secure_url : ""
 
   useEffect(() => {
-    if (!state) navigate("/courses");
-    dispatch(getCourseLectures(state._id));
+    // dispatch(getCourseLectures(state._id));
+    if(!state){
+      navigate("/courses");
+    }
+    else {
+      if (lectures[0]) {
+        return;
+      } else {
+        dispatch(getCourseLectures(state?._id))
+      }
+    }
   }, []);
 
   return (

@@ -12,24 +12,26 @@ export const getCourseLectures = createAsyncThunk("/course/lecture/get", async (
     try {
         const response = await axiosInstance.get(`/courses/${cid}`);
         const lectureNotFound = response?.data?.lectures.length > 0
-        console.log(response)
+        // console.log(response)
         if(!lectureNotFound){
-            toast.error("Lectures not found", { id: loadingMessageId });
+            toast.error("Lectures not found", { id: loadingMessageId});
         }
         else{
             toast.success("Successfully loaded lectures", { id: loadingMessageId });
         }
         return response?.data;
     } catch (error) {
-        toast.error("Failed to get lectures", { id: loadingMessageId})
+        toast.error("Failed to get lectures", { id: loadingMessageId })
     }
 }) 
 
 export const addCourseLecture = createAsyncThunk("/course/lecture/add", async (data) => {
     const loadingMessageId = toast.loading(`Adding lecture...`);
     try {
+        console.log(data.id);
         const response = await axiosInstance.post(`/courses/${data.id}`, data.formData) ;
-        toast.success(`Successfully added lecture`, { id: loadingMessageId });
+        // console.log(response)
+        toast.success(`Successfully added lecture`, { id: loadingMessageId,  });
         return response?.data
     } catch (error) {
         toast.error(`Failed to add lectures`, { id: loadingMessageId });
@@ -51,7 +53,12 @@ export const deleteCourseLecture = createAsyncThunk("/course/lecture/delete", as
 const lectureSlice = createSlice({
     name: "lecture",
     initialState,
-    reducers: {},
+    reducers: {
+        removeLectures: (state, action) => {
+            state.lectures = []
+            console.log(`remove leture ${state.lectures}`)
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getCourseLectures.fulfilled, (state, action) => {
             // console.log(action?.payload)
@@ -63,5 +70,5 @@ const lectureSlice = createSlice({
     },
 })
 
-
+export const { removeLectures } = lectureSlice.actions
 export default lectureSlice.reducer;

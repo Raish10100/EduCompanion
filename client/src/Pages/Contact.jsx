@@ -57,11 +57,11 @@ function Contact() {
 
   return (
     <HomeLayout>
-      <div className="flex justify-center items-center h-[90vh] dark:bg-[#12213b] bg-[#e5e7eb] ">
+      <div className="flex justify-center  items-center h-[90vh] dark:bg-[#12213b] bg-[#e5e7eb] ">
         <form
             onSubmit={onFormSubmit}
             noValidate
-          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[80%] sm:w-[50%] lg:w-[35%]  flex-col flex justify-center items-center py-5 gap-6 rounded "
+          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%] flex-col flex justify-center items-center py-5 gap-6 rounded "
         >
           <h1 className="text-xl vs:text-3xl text-black dark:text-white font-bold">
             Contact Us
@@ -108,7 +108,7 @@ function Contact() {
             <button
               type="submit"
               disabled={isLoading}
-              className="signup-btn dark:bg-[#ffffffe5] bg-[#000000] rounded text-white active:bg-[#000000a2] dark:active:bg-[#ffffff7f] transition-all ease-in-out duration-300 border-none px-3 py-3 w-[100%] dark:text-black font-semibold text-md sm:text-xl"
+              className={`signup-btn dark:bg-[#ffffffe5] bg-[#000000] ${isLoading ? "bg-[#000000a2] dark:bg-[#ffffff7f]" : ""} rounded text-white active:bg-[#000000a2] dark:active:bg-[#ffffff7f] transition-all ease-in-out duration-300 border-none px-3 py-3 w-[100%] dark:text-black font-semibold text-md sm:text-xl`}
             >
               {
                 isLoading ? "Submitting..." : "Submit"

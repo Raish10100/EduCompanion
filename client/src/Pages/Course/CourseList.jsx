@@ -4,15 +4,25 @@ import HomeLayout from "../../Layouts/HomeLayout";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import CourseCard from "../../Components/CourseCard";
+import { removeLectures } from "../../Redux/Slices/LectureSlice";
 
 function CourseList() {
 
 
     const dispatch = useDispatch();
 
-    const { courseData } = useSelector((state) => state.course);
+    const { courseData } = useSelector((state) => state?.course);
+
+    let { lectures } = useSelector((state) => state?.lecture )
+
 
     async function loadCourses() {
+        // if the lectures are there in state then remove 
+        if(lectures[0]) {
+            console.log(`remove lectures`)
+            await dispatch(removeLectures())
+        }
+        // console.log(lectures)
         await dispatch(getAllCourses());
     };
 

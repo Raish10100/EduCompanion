@@ -159,7 +159,7 @@ const addLectureToCourseById = async(req, res, next) => {
         
         const { title, description } = req.body;
         const { id } = req.params;
-
+        console.log(title, description, id)
         if(!title || !description) {
             return next(
                 new AppError('Please provide all fields', 400)
@@ -171,7 +171,7 @@ const addLectureToCourseById = async(req, res, next) => {
             return next(
                 new AppError('Course not found', 404)
             )
-        } 
+        }   
 
      const lectureData = {};
 
@@ -184,6 +184,9 @@ const addLectureToCourseById = async(req, res, next) => {
           });
     
           if (result) {
+            console.log(`Response of cloudinary after uploading video: ${result}`);
+            console.log(result.public_id);
+            console.log(result.secure_url);
             lectureData.public_id = result.public_id;
             lectureData.secure_url = result.secure_url;
           }
@@ -202,7 +205,7 @@ const addLectureToCourseById = async(req, res, next) => {
         description,
         lecture: lectureData
       })
-
+// console.log(course.lectures);
       course.numbersOfLectures = course.lectures.length;
 
       await course.save();
@@ -210,10 +213,10 @@ const addLectureToCourseById = async(req, res, next) => {
       res.status(200).json({
         success: true,
         message: 'Successfully added  lecture to course',
-
       })
 
     } catch (error) {
+        // console.log(error)
         res.status(400).json({
         success: false,
         message: error.message
