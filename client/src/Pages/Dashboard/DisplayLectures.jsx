@@ -15,12 +15,13 @@ function DisplayLectures() {
 
   const [currentVideo, setCurrentVideo] = useState(0);
 
-  const vidSrc = lectures.length > 0  ? lectures?.[currentVideo]?.lecture?.secure_url : ""
-
+  let vidSrc = lectures.length > 0  ? lectures?.[currentVideo]?.lecture?.secure_url : ""
+console.log(vidSrc)
   async function onLectureDelete(courseId, lectureId) {
     await dispatch(
       deleteCourseLecture({ courseId: courseId, lectureId: lectureId })
     );
+    setCurrentVideo(0);
     await dispatch(getCourseLectures(courseId));
   }
 
@@ -37,7 +38,7 @@ function DisplayLectures() {
         dispatch(getCourseLectures(state?._id))
       }
     }
-  }, []);
+  }, [vidSrc]);
 
   return (
     <HomeLayout>
