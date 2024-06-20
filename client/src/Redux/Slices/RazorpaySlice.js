@@ -51,6 +51,7 @@ export const getPaymentRecord = createAsyncThunk("/payments/record", async () =>
     const loadingId = toast.loading("Getting the payment records");
     try {
     const response = await axiosInstance.get("/payments?count=100");
+    console.log(response)
     toast.success("Successfully retrieved payment records", { id: loadingId})
     return response.data;
     } catch (error) {
@@ -92,6 +93,6 @@ const razorpaySlice = createSlice({
     }
 })
 
-console.log(initialState)
+// console.log(initialState)
 
 export default razorpaySlice.reducer;

@@ -17,7 +17,7 @@ function Navbar() {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") === "dark"
   );
-  console.log(darkMode);
+  // console.log(darkMode);
 
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
@@ -59,7 +59,7 @@ function Navbar() {
     const element = document.querySelector("html");
     element.classList.remove("light", "dark");
     if (darkMode || localStorage.theme == undefined) {
-      console.log("darkMode");
+      // console.log("darkMode");
       element.classList.add("dark");
       localStorage.setItem("theme", "dark");
     } else {

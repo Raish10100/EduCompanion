@@ -37,13 +37,13 @@ function Login() {
     setIsLoading(true)
     // dispatch "login" AsyncThunk
     const response = await dispatch(login(loginData));
-    console.log(response);
+    // console.log(response);
+    setIsLoading(false)
     if (response?.payload?.success) {
       setLoginData({
         email: "",
         password: "",
       });
-      setIsLoading(false)
       navigate("/");
     }
   };

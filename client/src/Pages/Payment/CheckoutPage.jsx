@@ -80,7 +80,7 @@ function CheckoutPage() {
         onSubmit={handleSubscription}
         className="min-h-[90vh] px-[10px] flex items-center justify-center text-black dark:text-white dark:bg-transparent bg-[#e5e7eb] "
       >
-        <div className="w-80 h-[24rem] sm:h-[26rem] flex flex-col justify-center shadow-[0_0_10px_black] rounded-lg relative dark:bg-[#436db662] bg-[#a3a3a345]">
+        <div className="sm:w-80 w-[260px] h-[24rem] sm:h-[26rem] flex flex-col justify-center shadow-[0_0_10px_black] rounded-lg relative dark:bg-[#436db662] bg-[#a3a3a345]">
           <h1 className="bg-[#a8a9aa] dark:bg-[#6189cde9] absolute top-0 w-full text-center py-4 text-lg sm:text-2xl font-bold rounded-tl-lg rounded-tr-lg">
             Subscription Bundle
           </h1>

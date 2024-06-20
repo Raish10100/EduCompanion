@@ -48,4 +48,4 @@ const userStats = async (req, res, next) => {
 export {
     contactUs,
     userStats
-}
+} 

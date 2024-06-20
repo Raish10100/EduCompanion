@@ -27,6 +27,7 @@ import PrivacyPolicy from "./Pages/Legal/PrivacyPolicy";
 import RefundCancellationPolicy from "./Pages/Legal/RefundCancellationPolicy";
 import ShippingPolicy from "./Pages/Legal/ShippingPolicy";
 import AddLecture from "./Pages/Dashboard/AddLecture";
+import AdminDashboard from "./Pages/Dashboard/AdminDashboard";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}> 
           <Route path="/course/create" element={<CreateCourse />} />
           <Route path="/course/addlecture" element={<AddLecture />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard/>} />
         </Route>
 
         <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]} />}>

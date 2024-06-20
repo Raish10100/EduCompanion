@@ -166,10 +166,13 @@ const allPayments = async (req, res, next) => {
      const { count, skip } = req.query;
  
      const allPayments = await razorpay.subscriptions.all({
+        plan_id: process.env.RAZORPAY_PLAN_ID,
          count: count || 10,
          skip: skip || 0,
+         status: "active"
      });
 
+    //  console.log(allPayments)
 
     const monthNames = [
         'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
@@ -182,9 +185,13 @@ const allPayments = async (req, res, next) => {
 
     const monthlyWisePayments = allPayments.items.map((payment) => {
         // payment.start_at is in unix time so we have to convert into total numbers of months
-        const monthsInNumbers = new Date(payment.start_at * 1000);  // total months from Unix epoch
 
-        return monthNames[monthsInNumbers.getMonth()]; // return the month name 
+        let monthsInNumbers ;
+       if(payment.start_at != null) {
+         monthsInNumbers = new Date(payment.start_at * 1000);  // total months from Unix epoch
+         return monthNames[monthsInNumbers.getMonth()]; // return the month name 
+        //  console.log(monthsInNumbers)
+        }
     });
 
     monthlyWisePayments.map((month) => {
@@ -211,9 +218,10 @@ const allPayments = async (req, res, next) => {
          monthlySalesRecord
      })
    } catch (error) {
+    console.log(error)
     res.status(400).json({
         success: false,
-        message: error
+        message: error.message
     })
    }
     
