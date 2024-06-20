@@ -72,7 +72,7 @@ function CreateCourse() {
 
     setIsCreatingCourse(true);
 
-    console.log(userInput);
+    // console.log(userInput);
     const response = await dispatch(createNewCourse(userInput, dispatch));
     if (response?.payload?.data?.success) {
       setUserInput({
@@ -87,7 +87,7 @@ function CreateCourse() {
       toast.success("Course created successfully", { id: response?.payload?.loadingMessageId});
     }
 
-    console.log(response)
+    // console.log(response)
     setIsCreatingCourse(false);
     
     navigate("/courses");
@@ -101,7 +101,7 @@ function CreateCourse() {
           action=""
           className="flex flex-col dark:bg-[#213049] bg-[#c2c5cb] gap-7 rounded-md md:py-5 py-7 md:px-7 px-3 md:w-[750px] w-full"
         >
-          <h1 className="text-center  text-[#000101] dark:text-[#fff] text-3xl font-bold">
+          <h1 className="text-center  text-[#000101] dark:text-[#fff] text-xl sm:text-3xl font-bold">
             Create New Course
           </h1>
           <main className="w-full flex md:flex-row md:justify-between justify-center flex-col md:gap-0 gap-5">
@@ -115,8 +115,8 @@ function CreateCourse() {
                       alt=""
                     />
                   ) : (
-                    <div className="w-full h-44 m-auto flex items-center justify-center">
-                      <h1 className="font-bold text-lg">
+                    <div className="w-full h-44 m-auto flex items-center text-center justify-center">
+                      <h1 className="font-bold text-sm sm:text-lg">
                         Upload your course thumbnail
                       </h1>
                     </div>
@@ -134,7 +134,7 @@ function CreateCourse() {
               <div className="flex flex-col gap-2 ">
                 <label
                   htmlFor="Instructor"
-                  className="font-[500] text-xl text-[#080202]  dark:text-white font-lato"
+                  className="font-[500] sm:text-xl text-[#080202]  dark:text-white font-lato"
                 >
                   Instructor
                 </label>
@@ -153,7 +153,7 @@ function CreateCourse() {
                <div className="flex flex-col gap-5  ">
                     <label
                     htmlFor="title"
-                    className="font-[500] text-start flex items-start justify-start text-xl text-[#080202]  dark:text-white font-lato  leading-3 "
+                    className="font-[500] text-start flex items-start justify-start sm:text-xl text-[#080202]  dark:text-white font-lato  leading-3 "
                     >
                     Title
                     </label>
@@ -170,7 +170,7 @@ function CreateCourse() {
                <div className="flex flex-col gap-5  ">
                     <label
                     htmlFor="category"
-                    className="font-[500] text-start flex items-start justify-start text-xl text-black  dark:text-white font-lato  leading-3 "
+                    className="font-[500] text-start flex items-start justify-start sm:text-xl text-black  dark:text-white font-lato  leading-3 "
                     >
                     Category
                     </label>
@@ -187,7 +187,7 @@ function CreateCourse() {
                <div className="flex flex-col gap-[9.5px]  ">
                     <label
                     htmlFor="description"
-                    className={`font-[500] text-start flex items-start justify-start text-xl text-black   dark:text-white font-lato`}
+                    className={`font-[500] text-start flex items-start justify-start sm:text-xl text-black   dark:text-white font-lato`}
                     >
                     Description
                     </label>
@@ -207,7 +207,7 @@ function CreateCourse() {
           <button
                type="submit"
                disabled={isCreatingCourse}
-               className="mt-3 bg-black hover:bg-[#000000be] text-white dark:bg-[#fff] dark:text-black dark:hover:bg-[#ffffffcb]  transition-all ease-in-out duration-300 rounded-md py-2 font-[500]  text-lg cursor-pointer"
+               className="sm:mt-3 bg-black hover:bg-[#000000be] text-white dark:bg-[#fff] dark:text-black dark:hover:bg-[#ffffffcb]  transition-all ease-in-out duration-300 rounded-md py-2 font-[500]  text-lg cursor-pointer"
           >
              { isCreatingCourse ? "Creating Course..." : "Create Course" }  
           </button>

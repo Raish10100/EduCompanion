@@ -57,18 +57,18 @@ function Contact() {
 
   return (
     <HomeLayout>
-      <div className="flex justify-center  items-center h-[90vh] dark:bg-[#12213b] bg-[#e5e7eb] ">
+      <div className="flex justify-center  items-center h-[90vh] py-10 dark:bg-[#12213b] bg-[#e5e7eb] ">
         <form
             onSubmit={onFormSubmit}
             noValidate
-          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%] flex-col flex justify-center items-center py-5 gap-6 rounded "
+          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl  w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%] flex-col flex justify-center items-center py-5 gap-6 rounded "
         >
           <h1 className="text-xl vs:text-3xl text-black dark:text-white font-bold">
             Contact Us
           </h1>
           <div className="fields w-[90%] flex flex-col justify-center items-center gap-3">
             <div className="w-[100%] flex flex-col gap-1">
-                <label htmlFor="Name" className="text-start w-[100%] text-xl font-bold dark:text-white text-black">Name</label>
+                <label htmlFor="Name" className="text-start w-[100%] sm:text-xl font-bold dark:text-white text-black">Name</label>
                 <input
                 required
                 type="name"
@@ -81,7 +81,7 @@ function Contact() {
                 />
             </div>
             <div className="w-[100%] flex flex-col gap-1">
-                <label htmlFor="Email" className="text-start w-[100%] text-xl font-bold dark:text-white text-black">Email</label> 
+                <label htmlFor="Email" className="text-start w-[100%] sm:text-xl font-bold dark:text-white text-black">Email</label> 
                 <input
                 required
                 type="email"
@@ -94,13 +94,13 @@ function Contact() {
                 />
             </div>
             <div className="w-[100%] flex flex-col gap-1">
-                <label htmlFor="message" className="text-start w-[100%] text-xl font-bold dark:text-white text-black">Message</label>
+                <label htmlFor="message" className="text-start w-[100%] sm:text-xl font-bold dark:text-white text-black">Message</label>
                 <textarea
                     required
                     placeholder="Enter your message"
                     name="message"
                     id="message"
-                    className="px-3 py-3 w-[100%] outline-none resize-none h-40 dark:hover:border-[#fff] border-black transition-all ease-in-out duration-300 tracking-widest text-black  dark:text-white dark:border-[#ffffff91] text-md sm:text-xl  border-2 rounded bg-transparent placeholder:text-black placeholder:dark:text-white"
+                    className="px-3 sm:py-3 py-2 w-[100%] outline-none resize-none h-20 sm:h-40 dark:hover:border-[#fff] border-black transition-all ease-in-out duration-300 tracking-widest text-black  dark:text-white dark:border-[#ffffff91] text-md sm:text-xl  border-2 rounded bg-transparent placeholder:text-black placeholder:dark:text-white"
                       value={userInput.message}
                       onChange={handleUserInput}
                 />

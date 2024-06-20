@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import HomeLayout from "../../Layouts/HomeLayout";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { changePassword } from "../../Redux/Slices/AuthSlice";
 import toast from "react-hot-toast";
@@ -10,10 +10,14 @@ function ChangePassword() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const [userPasswords, setUserPasswords] = useState({
         oldPassword: "",
         newPassword: ""
     })
+
+    const userEmail = useSelector(state => state?.auth?.data?.email);
 
 
     const handlePasswordChange = (event) => {
@@ -28,6 +32,11 @@ function ChangePassword() {
         event.preventDefault();
 
 
+      if(userEmail == "guest@edu-companion.online"){
+        console.log(userEmail)
+        toast.error("You are not authorized to change the password as this is a guest account");
+        return
+      }
         
         if (!userPasswords.oldPassword || !userPasswords.newPassword) {
             toast.error("All fields are mandatory");
@@ -45,6 +54,8 @@ function ChangePassword() {
         return;
       }
 
+      setIsLoading(true)
+
       const res = await dispatch(changePassword(userPasswords));
 
       
@@ -54,29 +65,31 @@ function ChangePassword() {
           newPassword: "",
         });
 
+        
+        setIsLoading(false)
         navigate("/user/profile")
-    };
+      };
   
     }
 
 
   return (
     <HomeLayout>
-      <div className="flex justify-center items-center  py-10 dark:bg-[#12213b] bg-[#e5e7eb] h-[90vh] ">
+      <div className="flex justify-center items-center  py-10 dark:bg-[#12213b] bg-[#e5e7eb] h-[80vh]  sm:h-[90vh] ">
         <form
             onSubmit={handleFormSubmit}
             noValidate
-          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%]  px-5  flex-col flex justify-center items-center  py-5 gap-4 rounded "
+          className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%]  sm:px-5  flex-col flex justify-center items-center  py-5 gap-4 rounded "
         >
           <h1 className="text-xl vs:text-3xl text-black dark:text-white font-bold ">
             Change Password
           </h1>
 
-          <div className="fields w-[90%] flex flex-col justify-center items-center mt-8 gap-6">
+          <div className="fields w-[90%] flex flex-col justify-center items-center mt-4 sm:mt-8  gap-6">
             <div className="w-[100%] flex flex-col gap-1">
               <label
                 htmlFor="Name"
-                className="text-start w-[100%] text-lg font-bold dark:text-white text-black"
+                className="text-start w-[100%] sm:text-lg sm:font-bold dark:text-white text-black"
               >
                 Current Password
               </label>
@@ -93,7 +106,7 @@ function ChangePassword() {
             <div className="w-[100%] flex flex-col gap-1">
               <label
                 htmlFor="Name"
-                className="text-start w-[100%] text-lg  font-bold dark:text-white text-black"
+                className="text-start w-[100%] sm:text-lg  sm:font-bold dark:text-white text-black"
               >
                 New Password
               </label>
@@ -110,9 +123,10 @@ function ChangePassword() {
 
             <button
               type="submit"
+              disabled={isLoading}
               className="signup-btn dark:bg-[#ffffffe5] bg-[#000000] rounded text-white active:bg-[#000000a2] placeholder:text-sm vs:placeholder:text-xl dark:active:bg-[#ffffff7f] transition-all ease-in-out duration-300 border-none px-3 py-3 w-[100%] dark:text-black font-semibold text-md sm:text-xl"
             >
-              Change
+              { isLoading ? "Changing..." : "Change"}
             </button>
             <div className="flex gap-2 text-[12px] vs:text-lg">
               <p>Forget password ? </p>

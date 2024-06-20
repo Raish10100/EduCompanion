@@ -47,7 +47,6 @@ function AddLecture() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true);
 
     if (!userInput.lecture || !userInput.title || !userInput.description) {
       toast.error("Please fill all the fields");
@@ -74,6 +73,8 @@ function AddLecture() {
       id: userInput.courseId,
       formData,
     };
+    
+    setIsLoading(true);
 
     const response = await dispatch(addCourseLecture(lectureData));
     // console.log(response)
