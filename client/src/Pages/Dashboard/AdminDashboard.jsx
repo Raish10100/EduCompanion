@@ -263,7 +263,7 @@ function AdminDashboard() {
                         <BsTrash />
                       </button>
 
-                      {/* to CRUD the lectures */}
+                      {/* Add and delete the lectures */}
                       <button
                         onClick={() =>
                           navigate("/course/displaylectures", {

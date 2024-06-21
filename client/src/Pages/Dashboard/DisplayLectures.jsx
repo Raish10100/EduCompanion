@@ -10,7 +10,7 @@ function DisplayLectures() {
 
   const { state } = useLocation();
   const { lectures } = useSelector((state) => state?.lecture);
-  // console.log(lectures)
+  console.log(state)
   const { role } = useSelector((state) => state?.auth);
 
   const [currentVideo, setCurrentVideo] = useState(0);
@@ -32,13 +32,9 @@ console.log(vidSrc)
       navigate("/courses");
     }
     else {
-      if (lectures[0]) {
-        return;
-      } else {
         dispatch(getCourseLectures(state?._id))
       }
-    }
-  }, [vidSrc]);
+  }, []);
 
   return (
     <HomeLayout>
