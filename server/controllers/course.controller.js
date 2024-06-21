@@ -95,35 +95,58 @@ const createCourse = async(req, res, next) => {
     }
 }
 
+
 const updateCourse = async(req, res, next) => {
     try {
         const { id } = req.params;
+        const { title, description, category, createdBy } = req.body;
 
-        const course = await Course.findByIdAndUpdate(
-            id,
-            {
-                $set: req.body,
-            },
-            {
-                runValidators: true
-            }
-        );
-
+        const course = await Course.findById(id);
         if(!course) {
             return next(
                 new AppError('Unable to update course', 500)
             )
+        };
+
+        console.log(course)
+
+        if(!title || !description || !category || !createdBy ) {
+            return next(
+                new AppError("All fields are required", 400)
+            )
         }
+        if(req.file) {
+            const result = await cloudinary.v2.uploader.upload(req.file.path, {
+                folder: 'lms'
+            });
+
+
+
+            if(result) {
+                course.thumbnail.public_id = result.public_id;
+                course.thumbnail.secure_url = result.secure_url;
+            }
+    
+
+            fs.rm(`uploads/${req.file.filename}`);
+
+        }
+    
+
+
+   
+          await course.save()
 
         res.status(200).json({
             success: true,
             message: 'Successfully updated course',
-            course
+            
         })
     } catch (error) {
         res.status(400).json({
             success: false,
             message: error.message,
+            error
         })
     }
 }

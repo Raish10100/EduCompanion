@@ -25,6 +25,7 @@ router.route('/:id')
                    .put(
                         isLoggedIn,
                         authorizedRoles("ADMIN"),
+                        upload.single("thumbnail"),
                         updateCourse
                     )
                    .delete(
