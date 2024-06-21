@@ -49,6 +49,8 @@ const createCourse = async(req, res, next) => {
         )
     }
 
+    console.log(req.body)
+
     const course = await Course.create({
         title,
         description,
@@ -100,7 +102,8 @@ const updateCourse = async(req, res, next) => {
     try {
         const { id } = req.params;
         const { title, description, category, createdBy } = req.body;
-
+// console.log(title, description, category, createdBy)
+console.log(req.body)
         const course = await Course.findById(id);
         if(!course) {
             return next(
@@ -108,13 +111,21 @@ const updateCourse = async(req, res, next) => {
             )
         };
 
-        console.log(course)
+        // console.log(course)
 
         if(!title || !description || !category || !createdBy ) {
             return next(
                 new AppError("All fields are required", 400)
             )
         }
+
+        course.title = title;
+        course.description = description;
+        course.category = category;
+        course.createdBy = createdBy
+
+
+
         if(req.file) {
             const result = await cloudinary.v2.uploader.upload(req.file.path, {
                 folder: 'lms'
@@ -129,7 +140,7 @@ const updateCourse = async(req, res, next) => {
     
 
             fs.rm(`uploads/${req.file.filename}`);
-
+            console.log("thumbnail -------------------------------------------")
         }
     
 

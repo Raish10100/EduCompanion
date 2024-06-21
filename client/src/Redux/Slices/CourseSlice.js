@@ -28,7 +28,7 @@ export const deleteCourse = createAsyncThunk("/course/delete", async (id) => {
     try{
         const response = await axiosInstance.delete(`/courses/${id}`);
         toast.success(response?.data?.message, { id: loadingMessageId })
-        return response?.data?.courses;
+        return response?.data;
     }
     catch (error) {
         toast.error(error?.response?.data?.message, { id: loadingMessageId });
@@ -63,6 +63,44 @@ export const createNewCourse = createAsyncThunk("/course/create", async (data) =
     }
 })
 
+export const updateCourse = createAsyncThunk("/course/update", async(data) => {
+    const loadingMessage = toast.loading("Please wait! creating new course...");
+console.log(data)
+    try {
+        const formData = new FormData();
+        formData.append("title", data?.userInput.title);
+        formData.append("description", data?.userInput?.description);
+        formData.append("category", data?.userInput?.category);
+        formData.append("createdBy", data?.userInput?.createdBy);
+        if(data?.userInput?.thumbnail != null) {
+            formData.append("thumbnail", data?.userInput?.thumbnail);
+        }
+        
+// // Function to log all entries in FormData
+// function logFormData(formData) {
+//     for (let pair of formData.entries()) {
+//         console.log(`${pair[0]}: ${pair[1]}`);
+//     }
+// }
+
+// // Log the contents of formData
+// logFormData(formData);
+
+        const response = await axiosInstance.put(`/courses/${data.id}`, formData);
+        console.log(response)
+        // toast.success("Course created successfully", { id: loadingMessage});
+
+        return {
+            data:  response?.data,
+            loadingMessageId: loadingMessage
+        };
+
+    } catch (error) {
+        console.log(error)
+        toast.error("Failed to update course", { id: loadingMessage});
+        return
+    }
+})
 
 const courseSlice = createSlice({
     name: "courses",

@@ -12,7 +12,7 @@ export const getStatsData = createAsyncThunk("/stats/get", async () => {
     const loadingMessageId = toast.loading("Getting Stats Data...");
     try {
         const response = await axiosInstance.get("/admin/stats/users");
-        console.log(response?.data)
+        // console.log(response?.data)
         toast.success(response?.data?.message, { id: loadingMessageId});
         return response?.data
     } catch (error) {

@@ -1,27 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createNewCourse } from "../../Redux/Slices/CourseSlice";
+import { useLocation, useNavigate } from "react-router-dom";
+import { createNewCourse, updateCourse } from "../../Redux/Slices/CourseSlice";
 import HomeLayout from "../../Layouts/HomeLayout";
 import { useId, useState } from "react";
 import toast from "react-hot-toast";
 
-function CreateCourse() {
+function UpdateCourse() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const {state} = useLocation();
+  const initialCourseData = state.initialCourseData;
+  console.log(initialCourseData)  
 
   const [isCreatingCourse, setIsCreatingCourse] = useState(false)
 
   const [userInput, setUserInput] = useState({
-    title: "",
-    category: "",
-    createdBy: "",
-    description: "",
+    title: initialCourseData.title,
+    category: initialCourseData.category,
+    createdBy: initialCourseData.createdBy,
+    description: initialCourseData.description,
     thumbnail: null,
-    previewImage: "",
+    previewImage: initialCourseData.thumbnail.secure_url,
   });
 
   const handleImgUpload = (e) => {
     e.preventDefault();
+    console.log("handle img uploader")
     const uploadedImg = e.target.files[0];
     if (uploadedImg) {
       const fileReader = new FileReader();
@@ -33,9 +38,9 @@ function CreateCourse() {
           thumbnail: uploadedImg,
         });
       });
-      // console.log(`fileReader img: ${fileReader.result}`);
     }
   };
+  console.log(userInput)
 
   const handleUserInput = (e) => {
     const { name, value } = e.target;
@@ -52,7 +57,6 @@ function CreateCourse() {
       !userInput.title ||
       !userInput.description ||
       !userInput.category ||
-      !userInput.thumbnail ||
       !userInput.createdBy
     ) {
       toast.error("All fields are mandatory");
@@ -73,7 +77,8 @@ function CreateCourse() {
     setIsCreatingCourse(true);
 
     // console.log(userInput);
-    const response = await dispatch(createNewCourse(userInput, dispatch));
+    const response = await dispatch(updateCourse({"userInput": userInput, "id" : initialCourseData._id}));
+    console.log(response)
     if (response?.payload?.data?.success) {
       setUserInput({
         title: "",
@@ -84,13 +89,14 @@ function CreateCourse() {
         previewImage: "",
       });
 
-      toast.success("Course created successfully", { id: response?.payload?.loadingMessageId});
+      toast.success("Course updated successfully", { id: response?.payload?.loadingMessageId});
+      navigate("/admin/dashboard");
+
     }
 
     // console.log(response)
     setIsCreatingCourse(false);
     
-    navigate("/courses");
   };
 
   return (
@@ -102,7 +108,7 @@ function CreateCourse() {
           className="flex flex-col dark:bg-[#213049] bg-[#c2c5cb] gap-7 rounded-md md:py-5 py-7 md:px-7 px-3 md:w-[750px] w-full"
         >
           <h1 className="text-center  text-[#000101] dark:text-[#fff] text-xl sm:text-3xl font-bold">
-            Create New Course
+            Update Course
           </h1>
           <main className="w-full flex md:flex-row md:justify-between justify-center flex-col md:gap-0 gap-5">
             <div className="left-side md:w-[48%] w-full flex flex-col gap-5">
@@ -149,7 +155,7 @@ function CreateCourse() {
                 />
               </div>
             </div>
-            <div className="right-side w-full md:w-[48%] flex flex-col gap-4">
+            <div className="right-side w-full md:w-[48%] flex flex-col gap-3">
                <div className="flex flex-col gap-2  ">
                     <label
                     htmlFor="title"
@@ -167,7 +173,7 @@ function CreateCourse() {
                     value={userInput.title}
                     />
                </div>
-               <div className="flex flex-col gap-2  ">
+               <div className="flex flex-col gap-3  ">
                     <label
                     htmlFor="category"
                     className="font-[500] text-start flex items-start justify-start sm:text-xl text-black  dark:text-white font-lato  leading-3 "
@@ -184,7 +190,7 @@ function CreateCourse() {
                     value={userInput.category}
                     />
                </div>
-               <div className="flex flex-col gap-[9.5px]  ">
+               <div className="flex flex-col gap-3  ">
                     <label
                     htmlFor="description"
                     className={`font-[500] text-start flex items-start justify-start sm:text-xl text-black   dark:text-white font-lato`}
@@ -209,7 +215,7 @@ function CreateCourse() {
                disabled={isCreatingCourse}
                className="sm:mt-3 bg-black hover:bg-[#000000be] text-white dark:bg-[#fff] dark:text-black dark:hover:bg-[#ffffffcb]  transition-all ease-in-out duration-300 rounded-md py-2 font-[500]  text-lg cursor-pointer"
           >
-             { isCreatingCourse ? "Creating Course..." : "Create Course" }  
+             { isCreatingCourse ? "Updating..." : "Update Course" }  
           </button>
         </form>
       </section>
@@ -217,4 +223,4 @@ function CreateCourse() {
   );
 }
 
-export default CreateCourse;
+export default UpdateCourse;
