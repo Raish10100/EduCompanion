@@ -11,7 +11,6 @@ function ShippingPolicy() {
             Shipping Policy
           </h1>
           <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-2">Shipping Policy</h2>
             <p className="mb-4">
               At EduCompanion, our courses are delivered digitally. Once a
               purchase is completed, access to the course materials will be

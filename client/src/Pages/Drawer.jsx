@@ -64,9 +64,9 @@ function Drawer() {
                             {
                                 isLoggedIn 
                                 ?
-                                <button ><Link onClick={handleLogout} className="bg-transparent hover:bg-[#4076d330] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[4px] rounded-sm   hover:border-gray-300  border-2">LogOut</Link></button>
+                                <button ><Link onClick={handleLogout} className="bg-transparent border-black dark:border-white hover:bg-[#4076d330] transition-all ease-in-out duration-300 text-[#3c8ff4] px-6 py-[4px] rounded-sm   hover:border-gray-300  border-2">LogOut</Link></button>
                                 :
-                                <button ><Link className="bg-transparent hover:bg-[#4076d330]  transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[4px] rounded-sm  hover:border-gray-300  border-2" to={'/login'}>LogIn</Link></button>
+                                <button ><Link className="bg-transparent border-black dark:border-white hover:bg-[#4076d330]  transition-all ease-in-out duration-300 text-[#3c8ff4] px-8 py-[4px] rounded-sm  hover:border-gray-300  border-2" to={'/login'}>LogIn</Link></button>
                             }
                             {
                                 isLoggedIn

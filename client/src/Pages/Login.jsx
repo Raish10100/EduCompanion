@@ -118,6 +118,14 @@ function Login() {
                   Guest login
                 </Link>
               </p>
+              <p
+                className="text-black dark:text-white text-sm sm:text-lg text-center"
+              >
+                Want to be an ADMIN{" "}
+                <a className="link text-[#463cfa] dark:hover:text-[#346560] hover:text-[#2f2b72] dark:text-accent cursor-pointer transition-all duration-300 ease-in-out" href="https://www.explore.edu-companion.online" target="_blank">
+                  ADMIN login
+                </a>
+              </p>
               <p className="text-black dark:text-white sm:text-lg text-sm">
                 Want to create account ?{" "}
                 <Link

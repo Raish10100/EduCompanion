@@ -166,7 +166,7 @@ function Navbar() {
             <button>
               <Link
                 onClick={handleLogout}
-                className=" hover:border-gray-500 border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]"
+                className=" hover:border-gray-500 border-black border-2 dark:border-white text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]"
               >
                 LogOut
               </Link>
@@ -174,7 +174,7 @@ function Navbar() {
           ) : (
             <button>
               <Link
-                className=" hover:border-gray-500 border-gray-100 border-2 text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]"
+                className=" hover:border-gray-500 border-black border-2 dark:border-white text-sm transition-all ease-in-out duration-300 text-[#3c8ff4] px-4 py-[6px] rounded-sm hover:bg-[#4076d330]"
                 to={"/login"}
               >
                 LogIn

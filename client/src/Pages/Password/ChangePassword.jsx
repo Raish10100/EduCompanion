@@ -129,7 +129,7 @@ function ChangePassword() {
               { isLoading ? "Changing..." : "Change"}
             </button>
             <div className="flex gap-2 text-[12px] vs:text-lg">
-              <p>Forget password ? </p>
+              <p className="text-black dark:text-white">Forget password ? </p>
               <Link
                 to={"/forgetpassword"}
                 className="link flex  gap-2 justify-center items-center text-[#463cfa] dark:hover:text-[#346560] hover:text-[#2f2b72] dark:text-accent cursor-pointer transition-all duration-300 ease-in-out"

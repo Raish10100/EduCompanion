@@ -116,7 +116,7 @@ function Footer() {
               EduCompanion, Wankaner, Morbi, <br /> Gujarat, 363621, India
             </a>
           </p>
-          <section className="socials flex justify-center items-center flex-wrap mt-[4px] gap-2 text-2xl text-white">
+          <section className="socials flex justify-center items-center flex-wrap mt-[4px] gap-5 text-2xl text-white">
             <a
               href="https://github.com/Raish10100/EduCompanion"
               target="_blank"
@@ -149,14 +149,7 @@ function Footer() {
             >
               <BsTwitter />
             </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#3c8ff4] transition-all ease-in-out duration-300"
-            >
-              <BsFacebook />
-            </a>
+
           </section>
         </section>
       </section>

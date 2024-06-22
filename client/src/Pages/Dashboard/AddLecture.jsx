@@ -112,7 +112,7 @@ function AddLecture() {
           className="relative dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[70%] md:w-[60%] lg:w-[45%] xl:w-[35%] flex-col flex justify-center items-center py-5 gap-6 rounded "
         >
           <header className=" flex justify-center items-center ">
-            <h1 className="text-2xl vs:text-2xl text-black dark:text-white font-bold">
+            <h1 className="text-2xl vs:text-3xl text-black dark:text-white font-bold">
               Add your new lecture
             </h1>
           </header>

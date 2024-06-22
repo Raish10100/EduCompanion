@@ -35,7 +35,7 @@ function Profile() {
               
               className="dark:bg-[#c6cedd16] bg-[#c0c3c9ef] shadow-2xl w-[90%] sm:w-[60%] lg:w-[45%] xl:w-[35%]   flex-col flex justify-center items-center pb-4 sm:py-5 sm:gap-4 rounded "
             >
-              { userData.avatar.secure_url === "random" ? <FaUserCircle className="w-full rounded-full dark:text-white text-black" size="100" /> : <img src={userData.avatar.secure_url}  className="rounded-full w-[100px] h-[100px] text-black   border-black " />}
+              { userData.avatar.secure_url === "random" ? <FaUserCircle className="w-full rounded-full dark:text-white text-black pt-2" size="100" /> : <img src={userData.avatar.secure_url}  className="rounded-full w-[100px] h-[100px] text-black pt-2  border-black " />}
               <div className="fields w-[90%] flex flex-col justify-center items-center gap-4 sm:gap-6">
                 <div className="w-[100%] flex flex-col  gap-0">
                 <label htmlFor="Name" className="text-start w-[100%] text-sm  dark:text-white text-black">Username</label>
