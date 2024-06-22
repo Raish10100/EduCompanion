@@ -15,7 +15,7 @@ Welcome to the Learning Management System (LMS) project! This comprehensive plat
 
 ### Preview 
 - [Live link](https://www.edu-companion.online)
-- [Video]()
+- [Video](https://www.linkedin.com/posts/raish-vadaviya-439213289_educompanion-learningmanagementsystem-mernstack-activity-7210243853482676224-SVl9?utm_source=share&utm_medium=member_desktop)
 
 ---
 
@@ -74,7 +74,7 @@ The EduCompanion platform caters to three types of users: unsubscribed users, su
 
 - **Guest Login**: Users can access a guest login feature on the login page. Once logged in as a guest, they gain permission to explore courses and view lectures.
 
-- **Explore Version**: Visitors to the [EduCompanion](https://www.edu-companion.online) website can opt to explore a project environment. By selecting "yes," users can access an environment where they have the authority to become an admin and utilize all platform features.
+- **Explore Version**: Visitors to the [EduCompanion](https://www.edu-companion.online) website can opt to become admin. By selecting "yes," users can access an environment where they have the authority to become an admin and utilize all platform features.
 
 ---
 
