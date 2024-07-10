@@ -10,13 +10,12 @@ import miscRoutes from './routes/miscellaneous.router.js'
 
 const app = express(); // creating instance of express
 
-
 app.use(express.json());// for parsing incoming JSON payloads 
 app.use(express.urlencoded({ extended: true })); // for parsing incoming URL-encoded payloads
 
 app.use(cors({ 
-    // origin: [process.env.FRONTEND_URL],
-    origin: true,
+    origin: [process.env.FRONTEND_URL],
+    // origin: true,
     credentials: true
 }))
 

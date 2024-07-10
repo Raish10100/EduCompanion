@@ -13,9 +13,11 @@ Welcome to the Learning Management System (LMS) project! This comprehensive plat
 - [Contact Information](#contact-information)
 
 
+
 ### Preview 
 - [Live link](https://www.edu-companion.online)
-- [Video](https://www.linkedin.com/posts/raish-vadaviya-439213289_educompanion-learningmanagementsystem-mernstack-activity-7210243853482676224-SVl9?utm_source=share&utm_medium=member_desktop)
+- [Video](https://res.cloudinary.com/deodsnio3/video/upload/v1720611047/Full_video_of_LMS_1_sa8i6n.mp4)
+- [System design](https://excalidraw.com/#json=Qy4KUrGZL1Cf7fLzpx80m,aC41qWSiYw3E0g51FuxRnA)
 
 ---
 
