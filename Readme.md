@@ -27,6 +27,8 @@ Welcome to the Learning Management System (LMS) project! This comprehensive plat
 
 ### Usage      
 
+#### Note: The preview videos in this section will not work on mobile devices. They are only functional on desktop mode.
+
 -  Login and Signup:
 
 https://github.com/Raish10100/Edu-Compnion-Frontend/assets/137144452/e9a38e3b-7959-469f-b902-678319af1114
